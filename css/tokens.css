@@ -1,0 +1,220 @@
+/* ==========================================================================
+   ALUMNI IN ACTION — Design tokens
+   Scale, spacing and colour system. Every size token is em-based so the whole
+   page scales off a single body font-size (see the fluid ramp in js/scroll.js).
+   ========================================================================== */
+
+:root {
+  /* --- Swatches --- */
+  --cream: #fdf7ec;
+  --sand: #f3e7d2;
+  --navy: #101d3a;
+  --navy-deep: #0a1428;
+  --white: #ffffff;
+  --gold: #e8b23c;
+  --gold-deep: #c8912a;
+  --gold-soft: #f4d38a;
+  --grey: #7b8194;
+  --ink-70: #4a4f5e;
+  --light-grey: #f6f6f6;
+  --stroke: #ded3c0;
+  --transparent: #fff0;
+
+  /* --- Families --- */
+  --font-heading: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Inter", Arial, sans-serif;
+  --font-mono: "Azeret Mono", "Courier New", monospace;
+
+  /* --- Weights --- */
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+
+  /* --- Heading scale --- */
+  --h-78: 4.875em;
+  --h-64: 4em;
+  --h-56: 3.5em;
+  --h-48: 3em;
+  --h-40: 2.5em;
+  --h-32: 2em;
+  --h-24: 1.5em;
+  --h-20: 1.25em;
+  --h-16: 1em;
+  --h-14: 0.875em;
+  --h-12: 0.75em;
+
+  /* --- Paragraph scale --- */
+  --t-24: 1.5em;
+  --t-20: 1.25em;
+  --t-18: 1.125em;
+  --t-16: 1em;
+  --t-14: 0.875em;
+  --t-12: 0.75em;
+  --t-10: 0.625em;
+
+  /* --- Spacing scale --- */
+  --s-0: 0em;
+  --s-4: 0.25em;
+  --s-8: 0.5em;
+  --s-12: 0.75em;
+  --s-16: 1em;
+  --s-18: 1.125em;
+  --s-20: 1.25em;
+  --s-24: 1.5em;
+  --s-32: 2em;
+  --s-40: 2.5em;
+  --s-48: 3em;
+  --s-56: 3.5em;
+  --s-64: 4em;
+  --s-72: 4.5em;
+  --s-80: 5em;
+  --s-96: 6em;
+  --s-112: 7em;
+  --s-144: 9em;
+  --s-184: 11.5em;
+  --s-240: 15em;
+
+  /* --- Containers --- */
+  --c-1360: 85em;
+  --c-1280: 80em;
+  --c-1064: 66.5em;
+  --c-848: 53em;
+
+  /* --- Section padding (collapses on smaller screens) --- */
+  --ps-80: 5em;
+  --ps-240: 15em;
+
+  /* --- Motion --- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-swap: cubic-bezier(0.62, 0.05, 0.01, 0.99);
+  --dur: 0.5s;
+
+  /* --- Field pattern: the yard-line motif reused across dark panels --- */
+  --field-lines: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.07) 0px,
+    rgba(255, 255, 255, 0.07) 1px,
+    transparent 1px,
+    transparent 84px
+  );
+  --field-glow: radial-gradient(120% 80% at 50% 0%, rgba(232, 178, 60, 0.28) 0%, rgba(16, 29, 58, 0) 62%);
+}
+
+@media (max-width: 991px) {
+  :root {
+    --ps-240: 7.5em;
+    --ps-80: 3.5em;
+    --h-78: 3.25em;
+    --h-64: 2.75em;
+    --h-56: 2.5em;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --ps-240: 5em;
+    --ps-80: 3em;
+    --h-78: 2.75em;
+    --h-64: 2.25em;
+    --h-56: 2em;
+    --h-48: 2em;
+    --h-40: 1.75em;
+  }
+}
+
+@media (max-width: 479px) {
+  :root {
+    --ps-240: 4em;
+    --h-78: 2.5em;
+    --h-64: 2em;
+    --h-56: 1.875em;
+  }
+}
+
+/* ==========================================================================
+   Type primitives
+   ========================================================================== */
+
+.heading-78 { font-size: var(--h-78); }
+.heading-64 { font-size: var(--h-64); }
+.heading-56 { font-size: var(--h-56); }
+.heading-48 { font-size: var(--h-48); }
+.heading-40 { font-size: var(--h-40); }
+.heading-32 { font-size: var(--h-32); }
+.heading-24 { font-size: var(--h-24); }
+.heading-20 { font-size: var(--h-20); }
+.heading-16 { font-size: var(--h-16); }
+.heading-14 { font-size: var(--h-14); }
+.heading-12 { font-size: var(--h-12); }
+
+.heading-78,
+.heading-64,
+.heading-56,
+.heading-48,
+.heading-40,
+.heading-32,
+.heading-24,
+.heading-20,
+.heading-16,
+.heading-14,
+.heading-12 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-600);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.heading-24,
+.heading-20,
+.heading-16,
+.heading-14,
+.heading-12 {
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.text-size-24 { font-size: var(--t-24); }
+.text-size-20 { font-size: var(--t-20); }
+.text-size-18 { font-size: var(--t-18); }
+.text-size-16 { font-size: var(--t-16); }
+.text-size-14 { font-size: var(--t-14); }
+.text-size-12 { font-size: var(--t-12); }
+.text-size-10 { font-size: var(--t-10); }
+
+.text-size-24,
+.text-size-20,
+.text-size-18,
+.text-size-16,
+.text-size-14,
+.text-size-12,
+.text-size-10 {
+  font-family: var(--font-body);
+  font-weight: var(--fw-400);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Mono eyebrow / counter labels — [ 01/04 ] */
+.labels {
+  font-family: var(--font-mono);
+  font-size: var(--t-12);
+  font-weight: var(--fw-400);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.labels.is-size-14 { font-size: var(--t-14); }
+.labels.is-gold { color: var(--gold); }
+
+.is-gold { color: var(--gold); }
+
+@media (max-width: 767px) {
+  .is-mobile-48 { font-size: var(--h-48); }
+  .is-mobile-40 { font-size: var(--h-40); }
+  .is-mobile-24 { font-size: var(--h-24); }
+  .mobile-text-18 { font-size: var(--t-18); }
+}

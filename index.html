@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alumni In Action — Guiding Los Angeles Inner-City Student Athletes</title>
+<meta name="description" content="Alumni In Action is a non-profit established in 2019, promoting athletics and academic opportunity for students at Francis Polytechnic High School and other Los Angeles inner-city schools.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;700&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.2.3/dist/lenis.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/sections.css">
+
+<noscript><style>.loader_wrapper { display: none !important; }</style></noscript>
+<script>
+/* Failsafe. The loader is a full-screen curtain that js/scroll.js lifts once
+   its animation finishes. If GSAP never loads — blocked CDN, offline, a script
+   error — that curtain would otherwise sit over the whole site forever. The
+   normal path hides it in roughly three seconds, so this only ever fires when
+   something has actually gone wrong. */
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    var loader = document.querySelector('.loader_wrapper');
+    if (loader) loader.style.display = 'none';
+    document.documentElement.classList.remove('no-scroll');
+  }, 6000);
+});
+</script>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ====================================================== LOADER (homepage only) -->
+  <div class="loader_wrapper">
+    <div class="loader_top">
+      <div class="labels">Alumni In Action</div>
+      <div class="labels">Est. 2019</div>
+    </div>
+
+    <div class="loader_logo_wrapper">
+      <div class="loader_word">
+        <span class="is-outline">AIA</span>
+        <span class="is-filled">AIA</span>
+      </div>
+      <div class="loader_rule"><span></span></div>
+    </div>
+
+    <div class="loader_foot">
+      <div class="labels">Los Angeles, California</div>
+      <div class="labels">[ A brighter tomorrow ]</div>
+    </div>
+
+    <div class="loader_bg-wrapper"><div class="loader_bg"></div></div>
+  </div>
+
+  <!-- ====================================================== NAV -->
+  <div class="navbar">
+    <div class="nav-bg"></div>
+    <div class="page-padding">
+      <div class="container-1360">
+        <div class="padding-section-24">
+          <div class="nav-menu-wrapper">
+
+            <a href="index.html" class="brand" aria-label="Alumni In Action home">
+              <span class="brand_mark"><img src="img/logo.png" alt="Alumni In Action crest"></span>
+              <span class="brand_word"><span>Alumni In Action</span><span>Est. 2019</span></span>
+            </a>
+
+            <nav class="nav-menu">
+              <div class="nav-links-wrapper">
+                <a href="index.html" class="nav-link link-swap is-current" aria-current="page">
+                  <span class="link-text">Home</span><span class="link-text-hover">Home</span>
+                </a>
+                <a href="about.html" class="nav-link link-swap">
+                  <span class="link-text">About</span><span class="link-text-hover">About</span>
+                </a>
+                <a href="president.html" class="nav-link link-swap">
+                  <span class="link-text">President</span><span class="link-text-hover">President</span>
+                </a>
+                <a href="events.html" class="nav-link link-swap">
+                  <span class="link-text">Events</span><span class="link-text-hover">Events</span>
+                </a>
+                <a href="store.html" class="nav-link link-swap">
+                  <span class="link-text">Store</span><span class="link-text-hover">Store</span>
+                </a>
+                <a href="contact.html" class="nav-link link-swap">
+                  <span class="link-text">Contact</span><span class="link-text-hover">Contact</span>
+                </a>
+              </div>
+
+              <div class="nav-button">
+                <a href="donate.html" class="btn-primary is-gold">
+                  <span class="btn-text-wrapper">
+                    <span class="btn-label-16">Donate</span>
+                    <span class="btn-label-16-hover">Donate</span>
+                  </span>
+                  <span class="btn-arrow">
+                    <span class="btn-arrow-bg"></span>
+                    <span class="btn-icon">
+                      <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                      <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    </span>
+                  </span>
+                  <span class="btn-bg"></span>
+                </a>
+              </div>
+            </nav>
+
+            <button class="nav-menu-button" data-nav-toggle aria-label="Menu" aria-expanded="false">
+              <span class="nav-burger"><span></span><span></span><span></span></span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main-wrapper" id="main">
+
+    <!-- ================================================== 01 HERO -->
+    <section class="section-home-hero">
+      <div class="home-hero_sticky-div">
+        <div class="home-hero_bg">
+          <img src="img/hero-stadium.jpg" alt="A floodlit football field seen from the fifty-yard line">
+          <div class="bg-img_overlay"></div>
+        </div>
+        <div class="home-hero_outline-bg"></div>
+
+        <div class="home-hero_content">
+          <div class="page-padding">
+            <div class="container-1360">
+              <div class="padding-nav-offset">
+                <div class="padding-section-t112-b56 top-32">
+                  <div class="home-hero_wrapper">
+
+                    <div class="home-hero_heading">
+                      <h1 class="heading-78" data-split-lines>
+                        We are Alumni In Action.
+                      </h1>
+                    </div>
+
+                    <div class="home-hero_subheading-wrapper">
+                      <div class="home-hero_subheading">
+                        <h2 class="text-size-20" data-reveal>Bringing students, families, coaches and leaders together to guide and support our inner-city students into a brighter tomorrow.</h2>
+                        <div class="home-hero_scroll-cue labels" style="margin-top: var(--s-32);" data-reveal>
+                          <span>[ Scroll ]</span>
+                        </div>
+                      </div>
+
+                      <div class="home-hero_badge">
+                        <img src="img/logo.png" alt="Alumni In Action crest">
+                        <div class="labels">Est. 2019</div>
+                        <p class="text-size-14" style="color: rgba(253,247,236,0.8);">Non-profit · Los Angeles, CA</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== 02 MISSION INTRO -->
+    <section class="section-home-about">
+      <div class="page-padding">
+        <div class="container-1360">
+          <div class="padding-section-240 padding-bottom-0">
+            <div class="home-about_wrapper">
+
+              <div class="home-about_text-wrapper">
+                <div class="home-about_heading">
+                  <h3 class="heading-64" data-split-lines>Opportunity, Earned On And Off The Field.</h3>
+                </div>
+                <div class="home-about_subheading">
+                  <p class="text-size-20" data-reveal>Alumni In Action was established in 2019 as a non-profit organization. AIA promotes athletics at Francis Polytechnic High School in Los Angeles, as well as other Los Angeles inner-city schools — helping students aged 14 to 17 with a 2.0 GPA or greater.</p>
+                </div>
+              </div>
+
+              <div class="home-about_media_list">
+                <div class="home-about_media_item _01" data-reveal>
+                  <img src="img/field.jpg" alt="The fifty-yard line under stadium lights" loading="lazy">
+                </div>
+                <div class="home-about_media_item _02 home-about_quote" data-reveal>
+                  <div class="labels">[ Our mission ]</div>
+                  <p class="text-size-20">To bring students, families, coaches and leaders together to guide and support our inner-city students into a brighter tomorrow.</p>
+                  <a href="about.html" class="is-text-link text-size-14" style="color: var(--gold);">Read the full mission</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== 03 VALUES MARQUEE -->
+    <section class="section-home-trusted">
+      <div class="page-padding">
+        <div class="padding-section-240 padding-top-0">
+          <div class="padding-section-80 padding-bottom-0">
+            <div class="home-trusted_wrapper">
+
+              <div class="home-trusted_heading">
+                <h3 class="heading-16" data-reveal>What We Bring To The Community</h3>
+              </div>
+
+              <div class="home-trusted_marquee-component">
+                <div class="home-trusted_list-wrapper">
+                  <div class="home-trusted_list" data-marquee-track>
+                    <div class="home-trusted_item">Guidance</div>
+                    <div class="home-trusted_item">Instruction</div>
+                    <div class="home-trusted_item">Athletic Training</div>
+                    <div class="home-trusted_item">Scholarships</div>
+                    <div class="home-trusted_item">Parent Seminars</div>
+                    <div class="home-trusted_item">College Preparation</div>
+                    <div class="home-trusted_item">Fundraisers</div>
+                    <div class="home-trusted_item">Mentorship</div>
+                    <div class="home-trusted_item">Community Giving</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="home-trusted_divider"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== 04 WHAT WE DO -->
+    <section class="section-home-capabilities">
+      <div class="page-padding">
+        <div class="container-1360">
+          <div class="padding-section-80">
+            <div class="home-capabilities_wrapper">
+
+              <div class="home-capabilities_text-wrapper">
+                <div class="home-capabilities_heading">
+                  <h3 data-split-lines>we're all in.</h3>
+                </div>
+                <div class="home-capabilities_subheading">
+                  <p class="text-size-20" data-reveal>What defines Alumni In Action isn't only who we help. It's how we show up — for the student, the parent, and the coach alike.</p>
+                </div>
+              </div>
+
+              <div class="home-capabilities_dropdown_list">
+                <div class="home-capabilities_dropdown_item is-open" data-accordion>
+                  <button class="dropdown-toggle" data-accordion-toggle aria-expanded="true">
+                    <h4 class="heading-24 mobile-text-18">Guidance &amp; Instruction</h4>
+                    <span class="toggle-icon-wrapper"></span>
+                  </button>
+                  <div class="dropdown-list">
+                    <div class="dropdown-list_wrapper">
+                      <p class="text-size-16">Through guidance and instruction, students in the inner-city gain a greater opportunity to succeed on the playing field, in the classroom, and in life.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="home-capabilities_dropdown_item" data-accordion>
+                  <button class="dropdown-toggle" data-accordion-toggle aria-expanded="false">
+                    <h4 class="heading-24 mobile-text-18">Athletic Training</h4>
+                    <span class="toggle-icon-wrapper"></span>
+                  </button>
+                  <div class="dropdown-list">
+                    <div class="dropdown-list_wrapper">
+                      <p class="text-size-16">AIA promotes athletics at Francis Polytechnic High School and other Los Angeles inner-city schools, creating opportunities for students, parents, and coaches in the community.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="home-capabilities_dropdown_item" data-accordion>
+                  <button class="dropdown-toggle" data-accordion-toggle aria-expanded="false">
+                    <h4 class="heading-24 mobile-text-18">Parent Seminars</h4>
+                    <span class="toggle-icon-wrapper"></span>
+                  </button>
+                  <div class="dropdown-list">
+                    <div class="dropdown-list_wrapper">
+                      <p class="text-size-16">We conduct seminars for parents to get them more involved in their student's college preparation and future — because the family is part of the team.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="home-capabilities_dropdown_item" data-accordion>
+                  <button class="dropdown-toggle" data-accordion-toggle aria-expanded="false">
+                    <h4 class="heading-24 mobile-text-18">Scholarships &amp; Fundraising</h4>
+                    <span class="toggle-icon-wrapper"></span>
+                  </button>
+                  <div class="dropdown-list">
+                    <div class="dropdown-list_wrapper">
+                      <p class="text-size-16">Part of the plan for AIA is to promote fundraisers, provide scholarships, and receive donations from prominent businesses and organizations.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="home-capabilities_dropdown_item" data-accordion>
+                  <button class="dropdown-toggle" data-accordion-toggle aria-expanded="false">
+                    <h4 class="heading-24 mobile-text-18">Community Giving</h4>
+                    <span class="toggle-icon-wrapper"></span>
+                  </button>
+                  <div class="dropdown-list">
+                    <div class="dropdown-list_wrapper">
+                      <p class="text-size-16">AIA also plans to distribute donated turkeys to families of under-privileged students in the Los Angeles area.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-capabilities_bg-wrapper">
+        <div class="home-capabilities_bg-img" data-parallax>
+          <img src="img/hero-stadium.jpg" alt="" loading="lazy">
+        </div>
+        <div class="home-capabilities_bg-overlay"></div>
+        <div class="home-capabilities_bg-overlay _02"></div>
+      </div>
+    </section>
+
+    <!-- ================================================== 05 PROGRAMS (sticky stack) -->
+    <section class="section-home-scope">
+      <div class="page-padding">
+        <div class="container-1360">
+          <div class="padding-section-240 padding-bottom-0">
+            <div class="home-scope_wrapper">
+              <div class="home-scope_heading">
+                <h3 class="heading-78 is-mobile-40" data-split-lines>Four Ways We Back Our Students</h3>
+              </div>
+              <div class="home-scope_divider"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-scope_scroll-track" data-scope-track>
+        <div class="sticky-div">
+          <div class="page-padding" style="width: 100%;">
+            <div class="container-1360">
+              <div class="padding-section-t40 bottom-0">
+                <div class="home-scope_list">
+
+                  <div class="home-scope_item" data-scope-card>
+                    <div class="home-scope_item_img">
+                      <span class="scope-panel_icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M9 20V3l9 4-9 4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 20.5h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                      </span>
+                      <span class="scope-panel_numeral" aria-hidden="true">01</span>
+                    </div>
+                    <div class="home-scope_item_text">
+                      <div class="home-scope_item_pagination"><div class="labels">[ 01/04 ]</div></div>
+                      <div class="home-scope_item_heading"><h4 class="heading-40 is-mobile-24">On The Field</h4></div>
+                      <div class="home-scope_item_subheading">
+                        <p class="text-size-20">Athletic training and instruction that promotes athletics at Francis Polytechnic High School and other Los Angeles inner-city schools.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="home-scope_item" data-scope-card>
+                    <div class="home-scope_item_img">
+                      <span class="scope-panel_icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 2.5 7.5 12 12l9.5-4.5L12 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 9.8v5.4c0 1.7 2.7 3.1 6 3.1s6-1.4 6-3.1V9.8M21.5 7.5v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                      </span>
+                      <span class="scope-panel_numeral" aria-hidden="true">02</span>
+                    </div>
+                    <div class="home-scope_item_text">
+                      <div class="home-scope_item_pagination"><div class="labels">[ 02/04 ]</div></div>
+                      <div class="home-scope_item_heading"><h4 class="heading-40 is-mobile-24">In The Classroom</h4></div>
+                      <div class="home-scope_item_subheading">
+                        <p class="text-size-20">A 2.0 GPA or greater is the door in — and the standard we help students hold, so athletics and academics carry each other rather than compete.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="home-scope_item" data-scope-card>
+                    <div class="home-scope_item_img">
+                      <span class="scope-panel_icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5h7a2 2 0 0 1 2 2v10a2 2 0 0 0-2-2H4v-10Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M20 6.5h-7a2 2 0 0 0-2 2v10a2 2 0 0 1 2-2h7v-10Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                      </span>
+                      <span class="scope-panel_numeral" aria-hidden="true">03</span>
+                    </div>
+                    <div class="home-scope_item_text">
+                      <div class="home-scope_item_pagination"><div class="labels">[ 03/04 ]</div></div>
+                      <div class="home-scope_item_heading"><h4 class="heading-40 is-mobile-24">With The Family</h4></div>
+                      <div class="home-scope_item_subheading">
+                        <p class="text-size-20">Seminars that bring parents into their student's college preparation and future, so nobody is navigating the next step alone.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="home-scope_item" data-scope-card>
+                    <div class="home-scope_item_img">
+                      <span class="scope-panel_icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 20.5S3.5 15 3.5 9.4A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 8.5 2.1c0 5.6-8.5 11.1-8.5 11.1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                      </span>
+                      <span class="scope-panel_numeral" aria-hidden="true">04</span>
+                    </div>
+                    <div class="home-scope_item_text">
+                      <div class="home-scope_item_pagination"><div class="labels">[ 04/04 ]</div></div>
+                      <div class="home-scope_item_heading"><h4 class="heading-40 is-mobile-24">Across The Community</h4></div>
+                      <div class="home-scope_item_subheading">
+                        <p class="text-size-20">Fundraisers, scholarships, and holiday turkey distribution to families of under-privileged students across the Los Angeles area.</p>
+                      </div>
+                      <div class="home-scope_item_btn">
+                        <a href="about.html" class="btn-primary">
+                          <span class="btn-text-wrapper">
+                            <span class="btn-label-16">Learn More</span>
+                            <span class="btn-label-16-hover">Learn More</span>
+                          </span>
+                          <span class="btn-arrow">
+                            <span class="btn-arrow-bg"></span>
+                            <span class="btn-icon">
+                              <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                              <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            </span>
+                          </span>
+                          <span class="btn-bg"></span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== 06 MISSION BAND -->
+    <section class="section-mission-band">
+      <div class="page-padding">
+        <div class="container-1064">
+          <div class="padding-section-96">
+            <div class="mission-band_wrapper">
+              <div class="labels is-gold" data-reveal>[ Mission statement ]</div>
+              <blockquote class="heading-56" data-split-lines>Our mission is to bring students, families, coaches and leaders together to guide and support our inner-city students into a brighter tomorrow.</blockquote>
+              <div class="mission-band_mark" data-reveal><img src="img/logo.png" alt="Alumni In Action crest"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== 07 STATS -->
+    <section class="section-home-stats">
+      <div class="page-padding">
+        <div class="container-1360">
+          <div class="padding-section-240">
+            <div class="home-stats_wrapper">
+
+              <div class="home-stats_heading">
+                <div class="home-stats_first">
+                  <div class="home-stats_heading-wrapper"><h3 class="heading-64" data-reveal>Built By Alumni</h3></div>
+                  <div class="home-stats_heading_divider-wrapper">
+                    <div class="home-stats_heading_divider" data-divider></div>
+                  </div>
+                </div>
+                <div class="home-stats_heading_last"><h3 class="heading-64" data-reveal>For The Next Ones Up</h3></div>
+              </div>
+
+              <div class="home-stats_subheading-img-wrapper">
+                <div class="home-stats_img" data-reveal>
+                  <img src="img/field.jpg" alt="The fifty-yard line under stadium lights" loading="lazy">
+                </div>
+                <div class="home-stats_subheading">
+                  <p class="text-size-20" data-reveal>We create opportunities for students, parents, and coaches in the community — the kind of support many of us never had when we were the ones on the field.</p>
+                  <a href="president.html" class="btn-primary" data-reveal>
+                    <span class="btn-text-wrapper">
+                      <span class="btn-label-16">Meet our President</span>
+                      <span class="btn-label-16-hover">Meet our President</span>
+                    </span>
+                    <span class="btn-arrow">
+                      <span class="btn-arrow-bg"></span>
+                      <span class="btn-icon">
+                        <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                      </span>
+                    </span>
+                    <span class="btn-bg"></span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Each figure is written out in full so the page still states the
+                   right numbers if the count-up never runs; the animation resets
+                   to zero and counts back up when it scrolls into view. -->
+              <div class="home-stats_list">
+                <div class="home-stats_item_wrapper">
+                  <div class="home-stats_item_number"><h4 class="heading-48" data-count="2019" data-count-plain>2019</h4></div>
+                  <p class="text-size-20">Established as a non-profit</p>
+                </div>
+                <div class="home-stats_item_wrapper">
+                  <div class="home-stats_item_number">
+                    <h4 class="heading-48">14&ndash;</h4><h4 class="heading-48" data-count="17" data-count-plain>17</h4>
+                  </div>
+                  <p class="text-size-20">Age range we serve</p>
+                </div>
+                <div class="home-stats_item_wrapper">
+                  <div class="home-stats_item_number">
+                    <h4 class="heading-48" data-count="2.0" data-count-decimals="1">2.0</h4><h4 class="heading-48">+</h4>
+                  </div>
+                  <p class="text-size-20">Minimum GPA to take part</p>
+                </div>
+                <div class="home-stats_item_wrapper">
+                  <div class="home-stats_item_number">
+                    <h4 class="heading-48" data-count="3" data-count-plain>3</h4>
+                  </div>
+                  <p class="text-size-20">Ways to support the mission</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== 08 WAYS TO HELP -->
+    <section class="section-home-projects">
+
+      <div class="home-projects_bg-list-wrapper swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide home-projects_bg-item"><img src="img/hero-stadium.jpg" alt="" loading="lazy"></div>
+          <div class="swiper-slide home-projects_bg-item"><img src="img/hero-stadium.jpg" alt="" loading="lazy"></div>
+          <div class="swiper-slide home-projects_bg-item"><img src="img/field.jpg" alt="" loading="lazy"></div>
+        </div>
+      </div>
+      <div class="home-projects_bg-overlay"></div>
+
+      <div class="page-padding">
+        <div class="container-1360">
+          <div class="padding-section-96">
+            <div class="home-projects_wrapper">
+
+              <div class="home-projects_text-wrapper">
+                <div class="home-projects_heading"><h3 class="heading-64" data-reveal>Ways To Help</h3></div>
+                <div class="home-projects_pagination-btn">
+                  <div class="home-projects_pagination">
+                    <div class="labels">[ <span class="swiper-number-current">01</span>/<span class="swiper-number-total">04</span> ]</div>
+                  </div>
+                  <a href="donate.html" class="btn-primary">
+                    <span class="btn-text-wrapper">
+                      <span class="btn-label-16">Give now</span>
+                      <span class="btn-label-16-hover">Give now</span>
+                    </span>
+                    <span class="btn-bg"></span>
+                  </a>
+                  <div class="btn-prev" role="button" tabindex="0" aria-label="Previous card">
+                    <span class="btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="btn-bg"></span>
+                  </div>
+                  <div class="btn-next" role="button" tabindex="0" aria-label="Next card">
+                    <span class="btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M6 2l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="btn-bg"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="home-projects_list-wrapper swiper">
+                <div class="swiper-wrapper home-projects_list">
+
+                  <!-- 01 Donate -->
+                  <div class="swiper-slide home-projects_item">
+                    <div class="home-projects_item_wrapper">
+                      <div class="home-projects_item_head">
+                        <div class="home-projects_item_head_icon">
+                          <svg viewBox="0 0 24 24" fill="none"><path d="M12 20.5S3.5 15 3.5 9.4A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 8.5 2.1c0 5.6-8.5 11.1-8.5 11.1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="home-projects_item_industry">
+                          <div class="home-projects_industry_item"><div class="heading-12">Give</div></div>
+                        </div>
+                      </div>
+                      <div class="home-projects_item_text-wrapper">
+                        <div class="home-projects_item_heading"><h4 class="heading-24">Make a Donation</h4></div>
+                        <div class="projects_category_list">
+                          <div class="projects_category_item"><div class="heading-12">Scholarships</div></div>
+                          <div class="projects_category_item"><div class="heading-12">Training</div></div>
+                        </div>
+                        <div class="home-projects_item_description">
+                          <p class="text-size-16">Every donation, big or small, directly supports our mission to guide and train students aged 14 to 17. We only accept monetary donations at this time.</p>
+                        </div>
+                        <div class="home-projects_item_btn">
+                          <a href="donate.html" class="btn-primary">
+                            <span class="btn-text-wrapper"><span class="btn-label-16">Donate</span><span class="btn-label-16-hover">Donate</span></span>
+                            <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                              <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                              <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            </span></span>
+                            <span class="btn-bg"></span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 02 Golf tournament -->
+                  <div class="swiper-slide home-projects_item">
+                    <div class="home-projects_item_wrapper">
+                      <div class="home-projects_item_head">
+                        <div class="home-projects_item_head_icon">
+                          <svg viewBox="0 0 24 24" fill="none"><path d="M9 20V3l9 4-9 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6.5 20.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="home-projects_item_industry">
+                          <div class="home-projects_industry_item"><div class="heading-12">Attend</div></div>
+                        </div>
+                      </div>
+                      <div class="home-projects_item_text-wrapper">
+                        <div class="home-projects_item_heading"><h4 class="heading-24">Charity Golf Tournament</h4></div>
+                        <div class="projects_category_list">
+                          <div class="projects_category_item"><div class="heading-12">Fundraiser</div></div>
+                          <div class="projects_category_item"><div class="heading-12">Sponsorship</div></div>
+                        </div>
+                        <div class="home-projects_item_description">
+                          <p class="text-size-16">Our flagship fundraiser, supported by teams and star players from our President's network across the NFL and CFL. Dates for the next tournament will be announced here.</p>
+                        </div>
+                        <div class="home-projects_item_btn">
+                          <a href="events.html" class="btn-primary">
+                            <span class="btn-text-wrapper"><span class="btn-label-16">See events</span><span class="btn-label-16-hover">See events</span></span>
+                            <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                              <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                              <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            </span></span>
+                            <span class="btn-bg"></span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 03 Merchandise -->
+                  <div class="swiper-slide home-projects_item">
+                    <div class="home-projects_item_wrapper">
+                      <div class="home-projects_item_head">
+                        <div class="home-projects_item_head_icon">
+                          <svg viewBox="0 0 24 24" fill="none"><path d="M9 3.5 4 6v4h2.5v10.5h11V10H20V6l-5-2.5a3 3 0 0 1-6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="home-projects_item_industry">
+                          <div class="home-projects_industry_item"><div class="heading-12">Wear</div></div>
+                        </div>
+                      </div>
+                      <div class="home-projects_item_text-wrapper">
+                        <div class="home-projects_item_heading"><h4 class="heading-24">AIA Merchandise</h4></div>
+                        <div class="projects_category_list">
+                          <div class="projects_category_item"><div class="heading-12">T-Shirts</div></div>
+                          <div class="projects_category_item"><div class="heading-12">2026</div></div>
+                        </div>
+                        <div class="home-projects_item_description">
+                          <p class="text-size-16">AIA alumni t-shirts are on the way. Proceeds go straight back into scholarships, training, and community programs across Los Angeles.</p>
+                        </div>
+                        <div class="home-projects_item_btn">
+                          <a href="store.html" class="btn-primary">
+                            <span class="btn-text-wrapper"><span class="btn-label-16">Visit the store</span><span class="btn-label-16-hover">Visit the store</span></span>
+                            <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                              <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                              <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            </span></span>
+                            <span class="btn-bg"></span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 04 Partner -->
+                  <div class="swiper-slide home-projects_item">
+                    <div class="home-projects_item_wrapper">
+                      <div class="home-projects_item_head">
+                        <div class="home-projects_item_head_icon">
+                          <svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M3 19.5c0-2.8 2.5-4.5 5.5-4.5s5.5 1.7 5.5 4.5M15 15.2c3 .2 5 1.8 5 4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="home-projects_item_industry">
+                          <div class="home-projects_industry_item"><div class="heading-12">Partner</div></div>
+                        </div>
+                      </div>
+                      <div class="home-projects_item_text-wrapper">
+                        <div class="home-projects_item_heading"><h4 class="heading-24">Businesses &amp; Organizations</h4></div>
+                        <div class="projects_category_list">
+                          <div class="projects_category_item"><div class="heading-12">Corporate</div></div>
+                          <div class="projects_category_item"><div class="heading-12">Community</div></div>
+                        </div>
+                        <div class="home-projects_item_description">
+                          <p class="text-size-16">Part of the plan for AIA is to receive donations from prominent businesses and organizations. If that could be yours, we would like to hear from you.</p>
+                        </div>
+                        <div class="home-projects_item_btn">
+                          <a href="contact.html" class="btn-primary">
+                            <span class="btn-text-wrapper"><span class="btn-label-16">Get in touch</span><span class="btn-label-16-hover">Get in touch</span></span>
+                            <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                              <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                              <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            </span></span>
+                            <span class="btn-bg"></span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== 09 LEADERSHIP -->
+    <section class="section-home-careers">
+      <div class="page-padding">
+        <div class="container-1360">
+          <div class="padding-section-240 padding-bottom-0">
+            <div class="home-careers_wrapper">
+
+              <div class="home-careers_text-wrapper">
+                <div class="home-careers_heading"><h3 class="heading-56" data-split-lines>Two teammates, forty years on.</h3></div>
+                <div>
+                  <div class="home-careers_subheading"><p class="text-size-20" data-reveal>Alumni In Action began with a friendship formed on a Francis Polytechnic High School football field — and a shared idea about what a group like this could do for the students who come next.</p></div>
+                  <a href="president.html" class="btn-primary" data-reveal>
+                    <span class="btn-text-wrapper"><span class="btn-label-16">Read the story</span><span class="btn-label-16-hover">Read the story</span></span>
+                    <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                      <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                      <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    </span></span>
+                    <span class="btn-bg"></span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="leader-grid" data-stagger>
+                <article class="leader-card">
+                  <div class="leader-card_img">
+                    <div class="avatar-placeholder" role="img" aria-label="Portrait placeholder for Joe Kovacic">
+                      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.2" r="3.6" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 20c0-3.6 3.4-6.2 7.5-6.2s7.5 2.6 7.5 6.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    </div>
+                  </div>
+                  <div class="leader-card_text">
+                    <div class="labels">[ President ]</div>
+                    <h4 class="heading-32">Joe Kovacic</h4>
+                    <p class="text-size-16">Varsity captain and defensive lineman at Francis Polytechnic High School, later a player at LA Pierce College and Cal State Northridge, and a 37-year veteran of the Los Angeles City Fire Department.</p>
+                    <a href="president.html" class="is-text-link text-size-14" style="color: var(--gold);">Read the full biography</a>
+                  </div>
+                </article>
+
+                <article class="leader-card">
+                  <div class="leader-card_img is-crest"><img src="img/logo.png" alt="Alumni In Action crest" loading="lazy"></div>
+                  <div class="leader-card_text">
+                    <div class="labels">[ Co-founder ]</div>
+                    <h4 class="heading-32">Craig Ellis</h4>
+                    <p class="text-size-16">A premier running back who set the LA City rushing record in a game he only played three quarters of, and went on to the NFL and CFL. He brings nonprofit board experience and a network that supports AIA through donations, merchandise, and our Charity Golf Tournament.</p>
+                    <a href="president.html" class="is-text-link text-size-14" style="color: var(--gold);">How AIA started</a>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== 10 CTA -->
+    <section class="section-cta">
+      <div class="page-padding">
+        <div class="container-1360">
+          <div class="padding-section-t478-b240">
+            <div class="cta_wrapper">
+              <div class="cta_heading">
+                <h3 class="heading-64 is-mobile-48">
+                  <span class="is-inline">Support our community, </span><span class="is-text-stroke is-inline">empower our youth.</span>
+                </h3>
+              </div>
+              <div class="cta_subheading"><p class="text-size-20">Your contribution to Alumni In Action makes a tangible difference in the lives of inner-city students in Los Angeles.</p></div>
+              <div class="cta_btn">
+                <a href="donate.html" class="btn-primary is-gold">
+                  <span class="btn-text-wrapper"><span class="btn-label-16">Donate now</span><span class="btn-label-16-hover">Donate now</span></span>
+                  <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                    <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span></span>
+                  <span class="btn-bg"></span>
+                </a>
+                <a href="contact.html" class="btn-primary is-outline">
+                  <span class="btn-text-wrapper"><span class="btn-label-16">Get involved</span><span class="btn-label-16-hover">Get involved</span></span>
+                  <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                    <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span></span>
+                  <span class="btn-bg"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta_bg-wrapper">
+        <div class="cta_bg-img" data-parallax>
+          <img src="img/hero-stadium.jpg" alt="" loading="lazy">
+          <div class="cta_img-overlay"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================== FOOTER -->
+  <footer class="section-footer">
+    <div class="page-padding">
+      <div class="container-1280">
+        <div class="padding-section-80">
+          <div class="footer_wrapper">
+
+            <div class="footer_top">
+              <div class="footer_brand">
+                <div class="footer_brand_mark"><img src="img/logo.png" alt="Alumni In Action crest"></div>
+                <h3 class="heading-24">Alumni In Action</h3>
+                <p class="text-size-16">A Los Angeles non-profit established in 2019, promoting athletics and academic opportunity at Francis Polytechnic High School and other inner-city schools.</p>
+                <a href="donate.html" class="btn-primary is-gold">
+                  <span class="btn-text-wrapper"><span class="btn-label-16">Donate</span><span class="btn-label-16-hover">Donate</span></span>
+                  <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                    <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span></span>
+                  <span class="btn-bg"></span>
+                </a>
+              </div>
+
+              <div class="footer_links">
+                <div class="footer_link_item">
+                  <div class="footer_link_title"><h3 class="labels is-size-14">[01] Organization</h3></div>
+                  <div class="footer_link_list">
+                    <a href="about.html" class="footer-link link-swap"><span class="link-text">About us</span><span class="link-text-hover">About us</span></a>
+                    <a href="about.html#mission" class="footer-link link-swap"><span class="link-text">Mission statement</span><span class="link-text-hover">Mission statement</span></a>
+                    <a href="about.html#programs" class="footer-link link-swap"><span class="link-text">What we do</span><span class="link-text-hover">What we do</span></a>
+                    <a href="president.html" class="footer-link link-swap"><span class="link-text">Our President</span><span class="link-text-hover">Our President</span></a>
+                  </div>
+                </div>
+
+                <div class="footer_link_item">
+                  <div class="footer_link_title"><h3 class="labels is-size-14">[02] Get involved</h3></div>
+                  <div class="footer_link_list">
+                    <a href="donate.html" class="footer-link link-swap"><span class="link-text">Donate</span><span class="link-text-hover">Donate</span></a>
+                    <a href="events.html" class="footer-link link-swap"><span class="link-text">Upcoming events</span><span class="link-text-hover">Upcoming events</span></a>
+                    <a href="store.html" class="footer-link link-swap"><span class="link-text">Merchandise</span><span class="link-text-hover">Merchandise</span></a>
+                    <a href="contact.html" class="footer-link link-swap"><span class="link-text">Partner with us</span><span class="link-text-hover">Partner with us</span></a>
+                  </div>
+                </div>
+
+                <div class="footer_link_item">
+                  <div class="footer_link_title"><h3 class="labels is-size-14">[03] Contact</h3></div>
+                  <div class="footer_contact_list">
+                    <div class="footer_contact_item"><p class="text-size-14">Email<strong><a href="mailto:j.kovacic@alumniinaction.com">j.kovacic@alumniinaction.com</a></strong></p></div>
+                    <div class="footer_contact_item"><p class="text-size-14">President<strong>Joe Kovacic</strong></p></div>
+                    <div class="footer_contact_item"><p class="text-size-14">Based in<strong>Los Angeles, California</strong></p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer_bottom">
+              <p class="text-size-14">© <span data-year>2026</span> Alumni In Action. All rights reserved.</p>
+              <div class="footer_badges">
+                <span class="footer_badge">Non-profit organization</span>
+                <span class="footer_badge">Est. 2019</span>
+                <span class="footer_badge">Los Angeles, CA</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/lenis@1.2.3/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+<script src="js/scroll.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/sliders.js"></script>
+</body>
+</html>
