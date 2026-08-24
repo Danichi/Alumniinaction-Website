@@ -127,9 +127,16 @@ window.addEventListener('load', function () {
         <div class="home-hero_content">
           <div class="page-padding">
             <div class="container-1360">
-              <div class="padding-nav-offset">
-                <div class="padding-section-t112-b56 top-32">
-                  <div class="home-hero_wrapper">
+              <!-- Symmetric padding: the lockup is vertically centred by the
+                   sticky flex container, so uneven padding would offset it. -->
+              <div class="padding-section-80">
+                <div class="home-hero_wrapper">
+
+                    <div class="home-hero_crest" data-reveal>
+                      <img src="img/logo.png" alt="Alumni In Action crest">
+                    </div>
+
+                    <div class="labels home-hero_eyebrow" data-reveal>[ Est. 2019 · Los Angeles, California ]</div>
 
                     <div class="home-hero_heading">
                       <h1 class="heading-78" data-split-lines>
@@ -137,22 +144,20 @@ window.addEventListener('load', function () {
                       </h1>
                     </div>
 
-                    <div class="home-hero_subheading-wrapper">
-                      <div class="home-hero_subheading">
-                        <h2 class="text-size-20" data-reveal>Bringing students, families, coaches and leaders together to guide and support our inner-city students into a brighter tomorrow.</h2>
-                        <div class="home-hero_scroll-cue labels" style="margin-top: var(--s-32);" data-reveal>
-                          <span>[ Scroll ]</span>
-                        </div>
-                      </div>
-
-                      <div class="home-hero_badge">
-                        <img src="img/logo.png" alt="Alumni In Action crest">
-                        <div class="labels">Est. 2019</div>
-                        <p class="text-size-14" style="color: rgba(253,247,236,0.8);">Non-profit · Los Angeles, CA</p>
-                      </div>
+                    <div class="home-hero_subheading">
+                      <h2 class="text-size-20" data-reveal>Bringing students, families, coaches and leaders together to guide and support our inner-city students into a brighter tomorrow.</h2>
                     </div>
 
-                  </div>
+                    <div class="home-hero_meta labels" data-reveal>
+                      <span>Non-profit</span>
+                      <span>Francis Polytechnic High School</span>
+                      <span>Ages 14&ndash;17</span>
+                    </div>
+
+                    <div class="home-hero_scroll-cue labels" data-reveal>
+                      <span>[ Scroll ]</span>
+                    </div>
+
                 </div>
               </div>
             </div>
@@ -197,7 +202,7 @@ window.addEventListener('load', function () {
     <!-- ================================================== 03 VALUES MARQUEE -->
     <section class="section-home-trusted">
       <div class="page-padding">
-        <div class="padding-section-240 padding-top-0">
+        <div class="padding-section-96 padding-top-0">
           <div class="padding-section-80 padding-bottom-0">
             <div class="home-trusted_wrapper">
 
@@ -346,10 +351,6 @@ window.addEventListener('load', function () {
                     <div class="home-scope_item_img">
                       <img src="img/craig-youth-trophy.jpg" alt="Craig Ellis celebrating a championship with his youth team" loading="lazy">
                       <div class="scope-panel_scrim"></div>
-                      <span class="scope-panel_icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none"><path d="M9 20V3l9 4-9 4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6.5 20.5h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                      </span>
-                      <span class="scope-panel_numeral" aria-hidden="true">01</span>
                     </div>
                     <div class="home-scope_item_text">
                       <div class="home-scope_item_pagination"><div class="labels">[ 01/04 ]</div></div>
@@ -362,12 +363,8 @@ window.addEventListener('load', function () {
 
                   <div class="home-scope_item" data-scope-card>
                     <div class="home-scope_item_img">
-                      <img src="img/photo-classroom.jpg" alt="Students studying together in a classroom" loading="lazy">
+                      <img src="img/craig-youth-canada.jpg" alt="Three of the young men Craig has mentored since they were thirteen" loading="lazy">
                       <div class="scope-panel_scrim"></div>
-                      <span class="scope-panel_icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 2.5 7.5 12 12l9.5-4.5L12 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 9.8v5.4c0 1.7 2.7 3.1 6 3.1s6-1.4 6-3.1V9.8M21.5 7.5v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                      </span>
-                      <span class="scope-panel_numeral" aria-hidden="true">02</span>
                     </div>
                     <div class="home-scope_item_text">
                       <div class="home-scope_item_pagination"><div class="labels">[ 02/04 ]</div></div>
@@ -380,12 +377,8 @@ window.addEventListener('load', function () {
 
                   <div class="home-scope_item" data-scope-card>
                     <div class="home-scope_item_img">
-                      <img src="img/photo-family.jpg" alt="A parent and child sharing a warm moment together" loading="lazy">
+                      <img src="img/craig-speaking.jpg" alt="Craig Ellis addressing a room of adults" loading="lazy">
                       <div class="scope-panel_scrim"></div>
-                      <span class="scope-panel_icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5h7a2 2 0 0 1 2 2v10a2 2 0 0 0-2-2H4v-10Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M20 6.5h-7a2 2 0 0 0-2 2v10a2 2 0 0 1 2-2h7v-10Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-                      </span>
-                      <span class="scope-panel_numeral" aria-hidden="true">03</span>
                     </div>
                     <div class="home-scope_item_text">
                       <div class="home-scope_item_pagination"><div class="labels">[ 03/04 ]</div></div>
@@ -398,12 +391,8 @@ window.addEventListener('load', function () {
 
                   <div class="home-scope_item" data-scope-card>
                     <div class="home-scope_item_img">
-                      <img src="img/craig-burn-center.jpg" alt="Craig Ellis handing out presents at the burn center" loading="lazy">
+                      <img src="img/craig-burn-center.jpg" alt="Craig Ellis handing out presents at the burn center" loading="lazy" style="object-position: 50% 22%;">
                       <div class="scope-panel_scrim"></div>
-                      <span class="scope-panel_icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 20.5S3.5 15 3.5 9.4A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 8.5 2.1c0 5.6-8.5 11.1-8.5 11.1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-                      </span>
-                      <span class="scope-panel_numeral" aria-hidden="true">04</span>
                     </div>
                     <div class="home-scope_item_text">
                       <div class="home-scope_item_pagination"><div class="labels">[ 04/04 ]</div></div>
@@ -575,11 +564,8 @@ window.addEventListener('load', function () {
                   <div class="swiper-slide home-projects_item">
                     <div class="home-projects_item_wrapper">
                       <div class="home-projects_item_head">
-                        <img src="img/photo-donation.jpg" alt="" loading="lazy">
+                        <img src="img/craig-youth-training.jpg" alt="" loading="lazy">
                         <div class="home-projects_item_head_scrim"></div>
-                        <div class="home-projects_item_head_icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M12 20.5S3.5 15 3.5 9.4A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 8.5 2.1c0 5.6-8.5 11.1-8.5 11.1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-                        </div>
                         <div class="home-projects_item_industry">
                           <div class="home-projects_industry_item"><div class="heading-12">Give</div></div>
                         </div>
@@ -613,9 +599,6 @@ window.addEventListener('load', function () {
                       <div class="home-projects_item_head">
                         <img src="img/craig-autism-golf.jpg" alt="" loading="lazy">
                         <div class="home-projects_item_head_scrim"></div>
-                        <div class="home-projects_item_head_icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M9 20V3l9 4-9 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6.5 20.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                        </div>
                         <div class="home-projects_item_industry">
                           <div class="home-projects_industry_item"><div class="heading-12">Attend</div></div>
                         </div>
@@ -649,9 +632,6 @@ window.addEventListener('load', function () {
                       <div class="home-projects_item_head">
                         <img src="img/photo-merch-1.jpg" alt="" loading="lazy">
                         <div class="home-projects_item_head_scrim"></div>
-                        <div class="home-projects_item_head_icon">
-                          <svg viewBox="0 0 24 24" fill="none"><path d="M9 3.5 4 6v4h2.5v10.5h11V10H20V6l-5-2.5a3 3 0 0 1-6 0Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-                        </div>
                         <div class="home-projects_item_industry">
                           <div class="home-projects_industry_item"><div class="heading-12">Wear</div></div>
                         </div>
@@ -683,11 +663,8 @@ window.addEventListener('load', function () {
                   <div class="swiper-slide home-projects_item">
                     <div class="home-projects_item_wrapper">
                       <div class="home-projects_item_head">
-                        <img src="img/photo-handshake.jpg" alt="" loading="lazy">
+                        <img src="img/craig-nfl-alumni.jpg" alt="" loading="lazy">
                         <div class="home-projects_item_head_scrim"></div>
-                        <div class="home-projects_item_head_icon">
-                          <svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M3 19.5c0-2.8 2.5-4.5 5.5-4.5s5.5 1.7 5.5 4.5M15 15.2c3 .2 5 1.8 5 4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                        </div>
                         <div class="home-projects_item_industry">
                           <div class="home-projects_industry_item"><div class="heading-12">Partner</div></div>
                         </div>
@@ -756,8 +733,8 @@ window.addEventListener('load', function () {
                   <figcaption class="gallery-item_cap">Miami Dolphins</figcaption>
                 </figure>
                 <figure class="gallery-item" style="margin:0;">
-                  <img src="img/craig-speaking.jpg" alt="Craig Ellis speaking at a re-entry program" loading="lazy">
-                  <figcaption class="gallery-item_cap">Speaking at a re-entry program</figcaption>
+                  <img src="img/craig-dolphins-run.jpg" alt="Craig Ellis running the ball for the Miami Dolphins" loading="lazy">
+                  <figcaption class="gallery-item_cap">Miami Dolphins</figcaption>
                 </figure>
                 <figure class="gallery-item" style="margin:0;">
                   <img src="img/craig-youth-sidelines.jpg" alt="Craig Ellis with two of the athletes he mentors" loading="lazy">

@@ -121,8 +121,8 @@
 
     /* Entry animation for the hero, held until the loader is gone. */
     document.addEventListener('aia:ready', function () {
-      gsap.from('.home-hero_badge', {
-        y: 50, opacity: 0, duration: 1.1, ease: 'expo.out', delay: 0.15
+      gsap.from('.home-hero_crest', {
+        scale: 0.8, opacity: 0, duration: 1.1, ease: 'expo.out', delay: 0.15
       });
       gsap.from('.home-hero_bg', {
         scale: 1.16, duration: 1.8, ease: 'expo.out'
@@ -142,6 +142,11 @@
     if (!cards.length) return;
 
     mm.add('(min-width: 992px)', function () {
+      /* Opt the CSS into the pinned, overlapping layout. Until this runs the
+         cards render as an ordinary vertical list, so a failed script degrades
+         to something readable instead of four cards on top of each other. */
+      track.classList.add('is-stacked');
+
       /* Stack order: card 1 on top, each subsequent card behind it. */
       cards.forEach(function (card, i) {
         gsap.set(card, { zIndex: cards.length - i });
@@ -173,6 +178,7 @@
       });
 
       return function () {
+        track.classList.remove('is-stacked');
         cards.forEach(function (card) {
           gsap.set(card, { clearProps: 'all' });
           gsap.set(card.querySelector('.home-scope_item_img'), { clearProps: 'all' });

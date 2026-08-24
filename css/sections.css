@@ -15,7 +15,7 @@
   height: 100vh;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .home-hero_bg {
@@ -75,9 +75,32 @@
 
 .home-hero_content { position: relative; z-index: 2; width: 100%; color: var(--cream); }
 
-.home-hero_wrapper { display: flex; flex-direction: column; gap: var(--s-40); }
+/* Centred lockup: crest, headline, one line of mission, scroll cue. */
+.home-hero_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-32);
+  text-align: center;
+}
 
-.home-hero_heading h1 { max-width: 14em; text-shadow: 0 0.06em 0.5em rgba(10, 20, 40, 0.45); }
+.home-hero_crest {
+  width: 7em;
+  height: 7em;
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: 0 1em 3em rgba(0, 0, 0, 0.45);
+}
+
+.home-hero_crest img { width: 100%; height: 100%; object-fit: cover; }
+
+.home-hero_heading h1 {
+  max-width: 13em;
+  margin: 0 auto;
+  text-shadow: 0 0.06em 0.5em rgba(10, 20, 40, 0.45);
+}
+
+.home-hero_eyebrow { color: var(--gold); }
 
 /* Justifies the first line edge-to-edge. The zero-height trailing box is
    what forces the justification to apply. */
@@ -92,49 +115,39 @@
   .span-full-width { text-align: left; text-align-last: left; }
 }
 
-.home-hero_subheading-wrapper {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--s-40);
-}
+.home-hero_subheading { max-width: 34em; margin: 0 auto; }
 
-.home-hero_subheading { max-width: 32em; }
-
-.home-hero_badge {
-  position: relative;
-  flex: none;
+/* Small facts under the mission line, separated by hairlines. */
+.home-hero_meta {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--s-12);
-  width: 13em;
-  padding: var(--s-24);
-  border: 1px solid rgba(232, 178, 60, 0.45);
-  border-radius: var(--s-12);
-  /* Opaque enough to carry the type on its own — the blur is an enhancement,
-     not what makes the panel legible. */
-  background: rgba(10, 20, 40, 0.72);
-  backdrop-filter: blur(6px);
-  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--s-12) var(--s-20);
+  color: rgba(253, 247, 236, 0.75);
 }
 
-.home-hero_badge img { width: 5.5em; height: 5.5em; border-radius: 100px; }
-.home-hero_badge .labels { color: var(--gold); }
+.home-hero_meta span { display: flex; align-items: center; gap: var(--s-20); }
+.home-hero_meta span:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 1em;
+  background-color: rgba(253, 247, 236, 0.3);
+}
 
 .home-hero_scroll-cue {
   display: flex;
   align-items: center;
   gap: var(--s-8);
+  margin-top: var(--s-16);
   color: var(--cream);
-  opacity: 0.75;
+  opacity: 0.7;
 }
 
 @media (max-width: 991px) {
   .section-home-hero { height: auto; }
   .home-hero_sticky-div { position: static; height: auto; min-height: 100vh; }
-  .home-hero_subheading-wrapper { flex-direction: column; align-items: flex-start; }
-  .home-hero_badge { width: 100%; max-width: 20em; flex-direction: row; text-align: left; align-items: center; }
+  .home-hero_crest { width: 5.5em; height: 5.5em; }
 }
 
 /* --------------------------------------------------------------------------
@@ -152,10 +165,13 @@
 
 .home-about_subheading { max-width: 34em; color: var(--ink-70); }
 
+/* The photo sets the row height; the quote panel stretches to match it, so
+   neither one leaves a gap beside the other. */
 .home-about_media_list {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: var(--s-24);
+  align-items: stretch;
 }
 
 .home-about_media_item {
@@ -165,7 +181,7 @@
   aspect-ratio: 16 / 10;
 }
 
-.home-about_media_item._02 { aspect-ratio: 4 / 5; align-self: end; }
+.home-about_media_item._02 { aspect-ratio: auto; }
 .home-about_media_item img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Pull quote panel that sits beside the photo. */
@@ -173,8 +189,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--s-20);
-  padding: var(--s-40);
+  gap: var(--s-16);
+  padding: var(--s-32);
   background-color: var(--navy);
   background-image: var(--field-glow), var(--field-lines);
   color: var(--cream);
@@ -366,11 +382,34 @@
 .home-scope_heading h3 { max-width: 11em; }
 .home-scope_divider { height: 1px; background-color: var(--stroke); }
 
-/* Scroll distance for the stack: one viewport per card. */
+/* The cards read as a plain vertical list by default. The pinned, overlapping
+   stack is opt-in via .is-stacked, which js/animations.js only adds once it has
+   actually wired the scrub up — otherwise a missing GSAP would leave four cards
+   piled on top of each other. */
 .section-home-scope { position: relative; }
-.home-scope_scroll-track { position: relative; height: 400vh; }
+.home-scope_scroll-track { position: relative; }
 
-.sticky-div {
+.home-scope_list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-56);
+  width: 100%;
+}
+
+.home-scope_item {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: var(--s-40);
+  width: 100%;
+}
+
+/* --- Pinned stack (desktop, JS active) --- */
+.home-scope_scroll-track.is-stacked { height: 400vh; }
+
+.home-scope_scroll-track.is-stacked .sticky-div {
   position: sticky;
   top: 0;
   height: 100vh;
@@ -379,21 +418,15 @@
   align-items: center;
 }
 
-.home-scope_list {
+.home-scope_scroll-track.is-stacked .home-scope_list {
   position: relative;
-  width: 100%;
+  display: block;
   height: 72vh;
 }
 
-.home-scope_item {
+.home-scope_scroll-track.is-stacked .home-scope_item {
   position: absolute;
   inset: 0;
-  z-index: 2;
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: var(--s-40);
-  width: 100%;
   height: 100%;
 }
 
@@ -401,15 +434,16 @@
    on top of it while still tying the panel back to the brand palette. */
 .home-scope_item_img {
   position: relative;
-  display: grid;
-  place-items: center;
   width: 62%;
-  height: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: var(--s-12);
   overflow: hidden;
   transform-origin: 0 100%;
   background-color: var(--navy);
 }
+
+/* In the pinned stack the card owns the height, so the ratio is dropped. */
+.home-scope_scroll-track.is-stacked .home-scope_item_img { height: 100%; aspect-ratio: auto; }
 
 .home-scope_item_img img {
   position: absolute;
@@ -427,39 +461,6 @@
   background: linear-gradient(180deg, rgba(16, 29, 58, 0.72) 0%, rgba(16, 29, 58, 0.42) 45%, rgba(16, 29, 58, 0.8) 100%);
 }
 
-/* Each program gets its own mark rather than four repeats of the crest. */
-.scope-panel_icon {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 30%;
-  max-width: 13em;
-  min-width: 6em;
-  aspect-ratio: 1;
-  border-radius: 100px;
-  border: 1px solid rgba(232, 178, 60, 0.4);
-  background: rgba(232, 178, 60, 0.07);
-  color: var(--gold);
-}
-
-.scope-panel_icon svg { width: 46%; height: 46%; }
-
-.scope-panel_numeral {
-  position: absolute;
-  right: 0.1em;
-  bottom: -0.22em;
-  z-index: 1;
-  font-family: var(--font-heading);
-  font-weight: var(--fw-700);
-  font-size: clamp(8rem, 22vw, 20rem);
-  line-height: 0.8;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(232, 178, 60, 0.3);
-  pointer-events: none;
-  user-select: none;
-}
-
 .home-scope_item_text {
   display: flex;
   flex-direction: column;
@@ -474,12 +475,10 @@
 .home-scope_item_subheading { max-width: 22em; color: var(--ink-70); }
 .home-scope_item_btn { margin-top: var(--s-16); }
 
+/* Below the stack breakpoint the cards go full-width and single-column. */
 @media (max-width: 991px) {
-  .home-scope_scroll-track { height: auto; }
-  .sticky-div { position: relative; height: auto; top: auto; }
-  .home-scope_list { height: auto; display: flex; flex-direction: column; gap: var(--s-56); }
-  .home-scope_item { position: relative; inset: auto; flex-direction: column; height: auto; opacity: 1 !important; transform: none !important; }
-  .home-scope_item_img { width: 100%; aspect-ratio: 4 / 3; transform: none !important; }
+  .home-scope_item { flex-direction: column; }
+  .home-scope_item_img { width: 100%; transform: none !important; }
   .home-scope_item_text { width: 100%; }
 }
 
@@ -669,24 +668,6 @@
   background: linear-gradient(180deg, rgba(16, 29, 58, 0.35) 0%, rgba(16, 29, 58, 0.78) 100%);
 }
 
-.home-projects_item_head_icon {
-  position: absolute;
-  z-index: 4;
-  top: var(--s-20);
-  right: var(--s-20);
-  width: 3.5em;
-  height: 3.5em;
-  display: grid;
-  place-items: center;
-  border-radius: 100px;
-  border: 1px solid rgba(232, 178, 60, 0.4);
-  background: rgba(16, 29, 58, 0.35);
-  backdrop-filter: blur(4px);
-  color: var(--gold);
-}
-
-.home-projects_item_head_icon svg { width: 1.5em; height: 1.5em; }
-
 .home-projects_item_industry { position: relative; z-index: 4; }
 
 .home-projects_industry_item {
@@ -810,17 +791,6 @@
 
 .leader-card_img.is-crest img { width: 42%; height: auto; aspect-ratio: 1; border-radius: 100px; object-fit: cover; }
 
-/* Generic headshot placeholder — used until a real portrait is supplied. */
-.avatar-placeholder {
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: var(--light-grey);
-  color: var(--grey);
-}
-
-.avatar-placeholder svg { width: 42%; height: 42%; }
 
 .leader-card_text { display: flex; flex-direction: column; gap: var(--s-12); align-items: flex-start; padding: var(--s-32); }
 .leader-card_text .labels { color: var(--gold); }
@@ -1250,28 +1220,58 @@
 .gallery-item.is-tall { grid-row: span 2; aspect-ratio: 1 / 2; }
 .gallery-item.is-big  { grid-column: span 2; grid-row: span 2; aspect-ratio: 1; }
 
-/* Caption rides on the image so the wall stays flush. */
+/* Caption sits on a full-tile navy wash rather than a thin bottom gradient —
+   at small tile sizes a strip of gradient was never dark enough to carry text. */
 .gallery-item_cap {
   position: absolute;
-  inset: auto 0 0 0;
+  inset: 0;
   z-index: 2;
-  padding: var(--s-32) var(--s-16) var(--s-14);
-  background: linear-gradient(180deg, rgba(10, 20, 40, 0) 0%, rgba(10, 20, 40, 0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--s-20);
+  background: linear-gradient(180deg, rgba(10, 20, 40, 0.25) 0%, rgba(10, 20, 40, 0.88) 55%, rgba(10, 20, 40, 0.95) 100%);
   color: var(--cream);
   font-family: var(--font-body);
-  font-size: var(--t-14);
-  line-height: 1.35;
+  font-weight: var(--fw-500);
+  font-size: var(--t-16);
+  line-height: 1.4;
+  text-wrap: balance;
   opacity: 0;
-  transform: translateY(0.5em);
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+  transition: opacity 0.35s var(--ease-out);
+}
+
+/* Gold rule draws in above the text as the caption lands. */
+.gallery-item_cap::before {
+  content: "";
+  display: block;
+  width: 2.5em;
+  height: 2px;
+  margin-bottom: var(--s-12);
+  background-color: var(--gold);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.45s var(--ease-out) 0.08s;
 }
 
 .gallery-item:hover .gallery-item_cap,
-.gallery-item:focus-within .gallery-item_cap { opacity: 1; transform: translateY(0); }
+.gallery-item:focus-within .gallery-item_cap { opacity: 1; }
 
-/* Touch devices never hover — keep captions permanently visible there. */
+.gallery-item:hover .gallery-item_cap::before,
+.gallery-item:focus-within .gallery-item_cap::before { transform: scaleX(1); }
+
+/* Small tiles cannot carry 16px comfortably. */
+.gallery-item:not(.is-big):not(.is-wide) .gallery-item_cap { font-size: var(--t-14); padding: var(--s-16); }
+
+/* Touch devices never hover — keep captions visible and pinned to the bottom. */
 @media (hover: none) {
-  .gallery-item_cap { opacity: 1; transform: none; }
+  .gallery-item_cap {
+    opacity: 1;
+    inset: auto 0 0 0;
+    background: linear-gradient(180deg, rgba(10, 20, 40, 0) 0%, rgba(10, 20, 40, 0.92) 100%);
+    padding-top: var(--s-40);
+  }
+  .gallery-item_cap::before { transform: scaleX(1); }
 }
 
 @media (max-width: 991px) {
