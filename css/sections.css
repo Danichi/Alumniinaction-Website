@@ -397,8 +397,8 @@
   height: 100%;
 }
 
-/* No stock photography here — the card face is a lit field panel carrying the
-   crest and a ghosted index numeral, so the stack reads as one system. */
+/* A photo fills the card; a navy scrim keeps the icon and numeral legible
+   on top of it while still tying the panel back to the brand palette. */
 .home-scope_item_img {
   position: relative;
   display: grid;
@@ -409,10 +409,23 @@
   overflow: hidden;
   transform-origin: 0 100%;
   background-color: var(--navy);
-  background-image: var(--field-glow), var(--field-lines);
 }
 
-.home-scope_item_img img { width: 100%; height: 100%; object-fit: cover; }
+.home-scope_item_img img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scope-panel_scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(16, 29, 58, 0.72) 0%, rgba(16, 29, 58, 0.42) 45%, rgba(16, 29, 58, 0.8) 100%);
+}
 
 /* Each program gets its own mark rather than four repeats of the crest. */
 .scope-panel_icon {
@@ -628,7 +641,7 @@
 
 .home-projects_item_wrapper:hover { border-color: var(--gold); transform: translateY(-0.35em); }
 
-/* Card header block — navy field panel with an icon, in place of a photo. */
+/* Card header block — a photo with a navy scrim, carrying the icon and tag. */
 .home-projects_item_head {
   position: relative;
   display: flex;
@@ -637,12 +650,28 @@
   padding: var(--s-24);
   overflow: hidden;
   background-color: var(--navy);
-  background-image: var(--field-glow), var(--field-lines);
   color: var(--cream);
+}
+
+.home-projects_item_head img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-projects_item_head_scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(16, 29, 58, 0.35) 0%, rgba(16, 29, 58, 0.78) 100%);
 }
 
 .home-projects_item_head_icon {
   position: absolute;
+  z-index: 4;
   top: var(--s-20);
   right: var(--s-20);
   width: 3.5em;
@@ -651,6 +680,8 @@
   place-items: center;
   border-radius: 100px;
   border: 1px solid rgba(232, 178, 60, 0.4);
+  background: rgba(16, 29, 58, 0.35);
+  backdrop-filter: blur(4px);
   color: var(--gold);
 }
 
@@ -1034,14 +1065,28 @@
 }
 
 .merch-tile_art {
-  display: grid;
-  place-items: center;
+  position: relative;
   aspect-ratio: 1;
+  overflow: hidden;
   background-color: var(--navy);
-  background-image: var(--field-glow), var(--field-lines);
 }
 
-.merch-tile_art img { width: 46%; aspect-ratio: 1; border-radius: 100px; object-fit: cover; }
+.merch-tile_art img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease-out); }
+.merch-tile:hover .merch-tile_art img { transform: scale(1.05); }
+
+.merch-tile_art_crest {
+  position: absolute;
+  right: var(--s-16);
+  bottom: var(--s-16);
+  z-index: 2;
+  width: 3em;
+  height: 3em;
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, 0.35);
+}
+
+.merch-tile_art_crest img { width: 100%; height: 100%; object-fit: cover; }
 .merch-tile_text { display: flex; flex-direction: column; gap: var(--s-8); align-items: flex-start; padding: var(--s-24); }
 .merch-tile_text p { color: var(--grey); }
 
@@ -1158,6 +1203,163 @@
 
 .amount-chip:hover,
 .amount-chip.is-active { border-color: var(--gold); background-color: var(--gold); color: var(--navy); }
+
+/* --------------------------------------------------------------------------
+   Story pages — photo walls, era blocks, quoted letters
+   -------------------------------------------------------------------------- */
+
+/* A big opening statement in his own voice. */
+.story-lead {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-600);
+  font-size: var(--h-40);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  max-width: 16em;
+  margin: 0;
+}
+
+.story-lead_attrib { margin-top: var(--s-20); color: var(--gold-deep); }
+
+/* Photo wall. Items can claim extra width or height to break the grid up. */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-16);
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--s-12);
+  aspect-ratio: 1;
+  background-color: var(--navy);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.gallery-item:hover img { transform: scale(1.05); }
+
+.gallery-item.is-wide { grid-column: span 2; aspect-ratio: 2 / 1; }
+.gallery-item.is-tall { grid-row: span 2; aspect-ratio: 1 / 2; }
+.gallery-item.is-big  { grid-column: span 2; grid-row: span 2; aspect-ratio: 1; }
+
+/* Caption rides on the image so the wall stays flush. */
+.gallery-item_cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding: var(--s-32) var(--s-16) var(--s-14);
+  background: linear-gradient(180deg, rgba(10, 20, 40, 0) 0%, rgba(10, 20, 40, 0.85) 100%);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: var(--t-14);
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(0.5em);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.gallery-item:hover .gallery-item_cap,
+.gallery-item:focus-within .gallery-item_cap { opacity: 1; transform: translateY(0); }
+
+/* Touch devices never hover — keep captions permanently visible there. */
+@media (hover: none) {
+  .gallery-item_cap { opacity: 1; transform: none; }
+}
+
+@media (max-width: 991px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item.is-big { grid-column: span 2; grid-row: span 1; aspect-ratio: 3 / 2; }
+  .gallery-item.is-tall { grid-row: span 1; aspect-ratio: 1; }
+}
+
+@media (max-width: 479px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item,
+  .gallery-item.is-wide,
+  .gallery-item.is-big,
+  .gallery-item.is-tall { grid-column: span 1; grid-row: span 1; aspect-ratio: 4 / 3; }
+}
+
+/* A chapter of his life: label, heading, prose, supporting photo. */
+.era-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-64);
+  align-items: center;
+  padding: var(--s-72) 0;
+  border-top: 1px solid var(--stroke);
+}
+
+.era-block:nth-child(even) .era-block_media { order: 2; }
+
+.era-block_media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--s-12);
+  aspect-ratio: 4 / 3;
+  background-color: var(--navy);
+}
+
+.era-block_media img { width: 100%; height: 100%; object-fit: cover; }
+.era-block_media.is-portrait { aspect-ratio: 3 / 4; }
+.era-block_media.is-contain { background-color: var(--sand); }
+.era-block_media.is-contain img { object-fit: contain; }
+
+.era-block_text { display: flex; flex-direction: column; gap: var(--s-20); align-items: flex-start; }
+.era-block_text p { color: var(--ink-70); }
+.era-block_text .labels { color: var(--gold-deep); }
+
+/* Quoted letter of support. */
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-20);
+  height: 100%;
+  padding: var(--s-32);
+  background-color: var(--sand);
+  border-radius: var(--s-12);
+  border-left: 3px solid var(--gold);
+}
+
+.quote-card blockquote {
+  margin: 0;
+  color: var(--navy);
+  font-size: var(--t-18);
+  line-height: 1.5;
+}
+
+.quote-card_source { margin-top: auto; display: flex; flex-direction: column; gap: var(--s-4); }
+.quote-card_source strong { font-weight: var(--fw-500); color: var(--navy); }
+.quote-card_source span { color: var(--grey); font-size: var(--t-14); }
+
+/* Numbers pulled out of the record — used sparingly. */
+.figure-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-32);
+}
+
+.figure-item { display: flex; flex-direction: column; gap: var(--s-8); }
+.figure-item_num { font-family: var(--font-heading); font-weight: var(--fw-700); font-size: var(--h-48); line-height: 1; color: var(--navy); }
+.figure-item p { color: var(--grey); }
+
+.section-footer .figure-item_num { color: var(--gold); }
+
+@media (max-width: 991px) {
+  .era-block { grid-template-columns: 1fr; gap: var(--s-32); padding: var(--s-48) 0; }
+  .era-block:nth-child(even) .era-block_media { order: 0; }
+  .era-block_media.is-portrait { aspect-ratio: 4 / 3; }
+  .figure-row { grid-template-columns: repeat(2, 1fr); gap: var(--s-32) var(--s-24); }
+  .story-lead { font-size: var(--h-32); }
+}
 
 @media (max-width: 991px) {
   .two-col,
