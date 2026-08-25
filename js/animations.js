@@ -88,37 +88,76 @@
   }
 
   /* ------------------------------------------------------------------
-     Hero — bed parallax + scale, second bed crossfade, content lift
+     Hero — bed parallax, text lift-out, crest reveal into the centre
      ------------------------------------------------------------------ */
   function initHero() {
     var section = document.querySelector('.section-home-hero');
     if (!section) return;
 
     mm.add('(min-width: 992px)', function () {
+      var wrapper = section.querySelector('.home-hero_wrapper');
+      var shift = section.querySelector('.home-hero_crest-shift');
+      var sticky = section.querySelector('.home-hero_sticky-div');
+
+      /* Both of these read offsetHeight, which transforms do not affect — so
+         they stay correct when ScrollTrigger re-evaluates them on refresh,
+         even though the crest is mid-tween at the time. */
+      function crestTravel() {
+        /* The wrapper is centred in the sticky stage and the crest sits at the
+           top of it, so this is exactly the distance to the middle. */
+        return (wrapper.offsetHeight - shift.offsetHeight) / 2;
+      }
+
+      function crestScale() {
+        if (!shift.offsetHeight) return 2;
+        /* Land at roughly a quarter of the stage height, whatever the viewport
+           is doing to the em-based crest. */
+        var target = sticky.offsetHeight * 0.26 / shift.offsetHeight;
+        return Math.max(1.6, Math.min(3.2, target));
+      }
+
       var tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 0.6
+          scrub: 0.6,
+          invalidateOnRefresh: true
         }
       });
 
-      /* One photo bed the whole way down. It drifts and scales on scroll, then
-         the cream curtain below takes it out — no swap to a second image. */
-      /* The lockup has to be gone before it reaches the navbar. The navbar
-         flips to solid cream at 80px of scroll, and anything still on screen
-         behind it — the crest especially — gets sliced in half by that edge.
-         So: a shorter lift, and the fade finished early rather than lingering
-         at half opacity through the collision. */
+      /* One photo bed the whole way down — it drifts and scales, and the cream
+         curtain below takes it out. No swap to a second image.
+
+         The text has to be gone before it reaches the navbar, which flips to
+         solid cream at 80px of scroll and slices anything still behind it. The
+         crest is the exception: instead of fading with the rest it grows and
+         travels down into the middle of the stage, holds there as the brand
+         moment, and only then goes out with the wash. */
       tl.to('.home-hero_bg', { yPercent: 12, scale: 1.12, ease: 'none', duration: 1 }, 0)
-        .to('.home-hero_content', { yPercent: -10, ease: 'none', duration: 1 }, 0)
-        .to('.home-hero_content', { opacity: 0, ease: 'power2.in', duration: 0.32 }, 0.04)
+        .to('.home-hero_lockup', { yPercent: -10, ease: 'none', duration: 1 }, 0)
+        .to('.home-hero_lockup', { opacity: 0, ease: 'power2.in', duration: 0.26 }, 0.02)
+        /* Held until the text is fully gone. Overlapping the two puts the
+           crest on top of a half-faded headline, which reads as a collision
+           rather than a hand-off. */
+        .to(shift, {
+          y: crestTravel,
+          scale: crestScale,
+          ease: 'power2.inOut',
+          duration: 0.40
+        }, 0.12)
+        .to(shift, { opacity: 0, ease: 'power2.in', duration: 0.24 }, 0.74)
         .to('.home-hero_sticky-div', { '--hero-fade': 1, ease: 'none', duration: 1 }, 0);
 
       /* The ::after curtain can't be tweened directly — drive its opacity
          through a custom property the pseudo-element reads. */
       gsap.set('.home-hero_sticky-div', { '--hero-fade': 0 });
+
+      /* Dropping below the breakpoint tears the timeline down; clear what it
+         left on the crest so the stacked mobile hero starts clean. */
+      return function () {
+        gsap.set(shift, { clearProps: 'transform,opacity' });
+      };
     });
 
     /* Entry animation for the hero, once the page is up. */

@@ -571,12 +571,29 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .lightbox_tools { display: flex; align-items: center; gap: var(--s-12); flex: none; }
 
+/* Minus / level / plus, grouped so they read as one control. */
+.lightbox_zoom {
+  display: flex;
+  align-items: center;
+  gap: var(--s-8);
+  padding: 0.25em 0.5em;
+  border: 1px solid rgba(253, 247, 236, 0.18);
+  border-radius: 100px;
+}
+
+.lightbox_pct {
+  min-width: 4.5em;
+  color: var(--gold);
+  font-size: var(--t-12);
+  text-align: center;
+  white-space: nowrap;
+}
+
 .lightbox_btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--s-8);
-  min-width: 8.5em;
   padding: 0.55em 1.1em;
   border: 1px solid rgba(253, 247, 236, 0.28);
   border-radius: 100px;
@@ -585,14 +602,20 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: var(--t-12);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  transition: background-color 0.25s var(--ease-out), border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  transition: background-color 0.25s var(--ease-out), border-color 0.25s var(--ease-out), color 0.25s var(--ease-out), opacity 0.25s var(--ease-out);
 }
 
 .lightbox_btn:hover { background-color: var(--gold); border-color: var(--gold); color: var(--navy-deep); }
 .lightbox_btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-.lightbox_btn.is-icon { min-width: 0; width: 2.75em; height: 2.75em; padding: 0; }
+.lightbox_btn:disabled { opacity: 0.3; cursor: default; }
+.lightbox_btn:disabled:hover { background-color: transparent; border-color: rgba(253, 247, 236, 0.28); color: var(--cream); }
+
+.lightbox_btn.is-icon { width: 2.4em; height: 2.4em; padding: 0; }
 .lightbox_btn.is-icon svg { width: 1em; height: 1em; }
+
+/* The zoom pair sits inside its own pill, so it drops the doubled outline. */
+.lightbox_zoom .lightbox_btn { border-color: transparent; }
 
 /* The picture itself. Fitted by default; the zoomed state hands scrolling
    over to this box so a full-resolution letter can be panned around. */
@@ -620,22 +643,28 @@ ul { margin: 0; padding: 0; list-style: none; }
   cursor: zoom-in;
 }
 
+/* Block layout once zoomed, not flex. As a flex item the image keeps its
+   default flex-shrink and gets squeezed back to the width of the stage the
+   moment it overflows — which silently caps every zoom step. Block layout
+   also puts the overflow where a scroll container can actually reach it. */
 .lightbox.is-zoomed .lightbox_stage {
+  display: block;
   overflow: auto;
-  align-items: flex-start;
-  justify-content: flex-start;
   cursor: grab;
 }
 
 .lightbox.is-zoomed .lightbox_stage.is-grabbing { cursor: grabbing; }
 
 .lightbox.is-zoomed .lightbox_stage img {
+  flex: none;
   max-width: none;
   max-height: none;
-  margin: auto;
+  margin: 0 auto;
   border-radius: 0;
-  cursor: zoom-out;
+  cursor: zoom-in;
 }
+
+.lightbox.is-zoomed.is-max .lightbox_stage img { cursor: zoom-out; }
 
 .lightbox_nav {
   position: absolute;
@@ -662,12 +691,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .lightbox_nav[hidden] { display: none; }
 
 @media (max-width: 767px) {
-  .lightbox_bar { padding: var(--s-16); }
-  .lightbox_btn { min-width: 0; }
-  .lightbox_btn .lightbox_btn-label { display: none; }
-  .lightbox_btn[data-lb-zoom] { width: 2.75em; height: 2.75em; padding: 0; }
-  .lightbox_btn[data-lb-zoom]::after { content: "+"; font-size: 1.4em; line-height: 1; }
-  .lightbox.is-zoomed .lightbox_btn[data-lb-zoom]::after { content: "\2212"; }
+  .lightbox_bar { padding: var(--s-12); gap: var(--s-12); }
+  .lightbox_cap { font-size: var(--t-12); }
+  .lightbox_pct { min-width: 3.6em; }
   .lightbox_stage { padding: 0 var(--s-12) var(--s-16); }
 }
 

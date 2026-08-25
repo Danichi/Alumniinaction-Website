@@ -92,30 +92,35 @@
               <div class="padding-section-80">
                 <div class="home-hero_wrapper">
 
-                    <div class="home-hero_crest" data-reveal>
-                      <img src="img/logo.png" alt="Alumni In Action crest">
+                    <!-- The crest sits in its own shift layer. On scroll that
+                         layer carries it to the middle of the screen while the
+                         text below fades out; the inner element is left free
+                         for the entry animation, so the two never fight over
+                         the same transform. -->
+                    <div class="home-hero_crest-shift">
+                      <div class="home-hero_crest" data-reveal>
+                        <img src="img/logo.png" alt="Alumni In Action crest">
+                      </div>
                     </div>
 
-                    <div class="labels home-hero_eyebrow" data-reveal>[ Est. 2019 · Los Angeles, California ]</div>
+                    <div class="home-hero_lockup">
+                      <div class="labels home-hero_eyebrow" data-reveal>[ Est. 2019 · Los Angeles, California ]</div>
 
-                    <div class="home-hero_heading">
-                      <h1 class="heading-78" data-split-lines>
-                        We are Alumni In Action.
-                      </h1>
-                    </div>
+                      <div class="home-hero_heading">
+                        <h1 class="heading-78" data-split-lines>
+                          We are Alumni In Action.
+                        </h1>
+                      </div>
 
-                    <div class="home-hero_subheading">
-                      <h2 class="text-size-20" data-reveal>Bringing students, families, coaches and leaders together to guide and support our inner-city students into a brighter tomorrow.</h2>
-                    </div>
+                      <div class="home-hero_subheading">
+                        <h2 class="text-size-20" data-reveal>Bringing students, families, coaches and leaders together to guide and support our inner-city students into a brighter tomorrow.</h2>
+                      </div>
 
-                    <div class="home-hero_meta labels" data-reveal>
-                      <span>Non-profit</span>
-                      <span>Francis Polytechnic High School</span>
-                      <span>Ages 14&ndash;17</span>
-                    </div>
-
-                    <div class="home-hero_scroll-cue labels" data-reveal>
-                      <span>[ Scroll ]</span>
+                      <div class="home-hero_meta labels" data-reveal>
+                        <span>Non-profit</span>
+                        <span>Francis Polytechnic High School</span>
+                        <span>Ages 14&ndash;17</span>
+                      </div>
                     </div>
 
                 </div>
@@ -671,7 +676,7 @@
               <div class="home-careers_text-wrapper">
                 <div class="home-careers_heading"><h3 class="heading-56" data-split-lines>&ldquo;Never forget where you come from.&rdquo;</h3></div>
                 <div>
-                  <div class="home-careers_subheading"><p class="text-size-20" data-reveal>Co-founder Craig Ellis grew up in South Central Los Angeles and passed through LA County Juvenile Hall as a teenager. Football took him to the Miami Dolphins and a record-setting CFL career. Now he goes back to that same juvenile hall to speak to the kids inside.</p></div>
+                  <div class="home-careers_subheading"><p class="text-size-20" data-reveal>Co-founder Craig Ellis grew up in South Central Los Angeles and passed through LA County Juvenile Hall as a teenager. Football took him to the Miami Dolphins and a record-setting CFL career. Now he coaches and mentors student athletes at Francis Polytechnic High School — and goes back to that same juvenile hall to speak to the kids inside.</p></div>
                   <a href="craig.html" class="btn-primary" data-reveal>
                     <span class="btn-text-wrapper"><span class="btn-label-16">Read his story</span><span class="btn-label-16-hover">Read his story</span></span>
                     <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">

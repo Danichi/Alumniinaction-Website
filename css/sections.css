@@ -55,7 +55,7 @@
 
 .home-hero_content { position: relative; z-index: 2; width: 100%; color: var(--cream); }
 
-/* Centred lockup: crest, headline, one line of mission, scroll cue. */
+/* Centred lockup: crest above, headline and mission line below. */
 .home-hero_wrapper {
   display: flex;
   flex-direction: column;
@@ -63,6 +63,10 @@
   gap: var(--s-32);
   text-align: center;
 }
+
+/* Scaled from its own centre, so the reveal grows outwards rather than
+   dragging the crest off its axis on the way to the middle. */
+.home-hero_crest-shift { transform-origin: 50% 50%; }
 
 .home-hero_crest {
   width: 7em;
@@ -73,6 +77,15 @@
 }
 
 .home-hero_crest img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Everything under the crest. Carries the gap the wrapper used to provide,
+   so grouping the text does not collapse the spacing between its lines. */
+.home-hero_lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-32);
+}
 
 .home-hero_heading h1 {
   max-width: 13em;
@@ -113,15 +126,6 @@
   width: 1px;
   height: 1em;
   background-color: rgba(253, 247, 236, 0.3);
-}
-
-.home-hero_scroll-cue {
-  display: flex;
-  align-items: center;
-  gap: var(--s-8);
-  margin-top: var(--s-16);
-  color: var(--cream);
-  opacity: 0.7;
 }
 
 @media (max-width: 991px) {

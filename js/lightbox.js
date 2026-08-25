@@ -4,8 +4,13 @@
    The letters of support and the printed feature run at thumbnail size in the
    page grid, which is enough to see that they exist but nowhere near enough to
    read them. Any image tagged [data-zoom] becomes clickable: it opens full
-   screen, fitted to the viewport, with a second click stepping up to the
-   file's native resolution so the body copy is actually legible.
+   screen, fitted to the viewport, and then zooms in steps.
+
+   The steps are multiples of the fitted size, not of the file's own pixel
+   dimensions. A one-page letter is legible at native resolution; a full
+   magazine page shot at the same resolution is not, because the same pixels
+   are carrying ten times the words. Anchoring to the fitted size means both
+   reach a readable size in the same number of clicks.
 
    Images tagged with the same [data-zoom-group] are browsable with the arrows.
    ========================================================================== */
@@ -19,11 +24,17 @@
   /* ------------------------------------------------------------------
      Markup — one overlay for the whole page, built once on first open
      ------------------------------------------------------------------ */
-  var box, stage, img, capEl, countEl, zoomBtn, prevBtn, nextBtn;
+  var box, stage, img, capEl, countEl, outBtn, inBtn, pctEl, prevBtn, nextBtn;
   var index = 0;
   var group = items;
-  var zoomed = false;
   var lastFocus = null;
+
+  /* Multiples of the fitted size. The top step is deliberately past native for
+     most of these files — they are photographs of print, so an upscale is soft
+     but still the difference between reading it and not. */
+  var STEPS = [1, 1.9, 2.9, 4.2];
+  var step = 0;
+  var fitW = 0;
 
   function build() {
     box = document.createElement('div');
@@ -37,8 +48,15 @@
         '<div class="lightbox_cap"><span class="lightbox_cap-text"></span>' +
         '<span class="lightbox_count labels"></span></div>' +
         '<div class="lightbox_tools">' +
-          '<button type="button" class="lightbox_btn" data-lb-zoom aria-label="Zoom in">' +
-            '<span class="lightbox_btn-label">Zoom in</span></button>' +
+          '<div class="lightbox_zoom">' +
+            '<button type="button" class="lightbox_btn is-icon" data-lb-out aria-label="Zoom out">' +
+              '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
+            '</button>' +
+            '<span class="lightbox_pct labels" aria-live="polite">Fit</span>' +
+            '<button type="button" class="lightbox_btn is-icon" data-lb-in aria-label="Zoom in">' +
+              '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
+            '</button>' +
+          '</div>' +
           '<button type="button" class="lightbox_btn is-icon" data-lb-close aria-label="Close">' +
             '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
           '</button>' +
@@ -56,25 +74,41 @@
     img     = stage.querySelector('img');
     capEl   = box.querySelector('.lightbox_cap-text');
     countEl = box.querySelector('.lightbox_count');
-    zoomBtn = box.querySelector('[data-lb-zoom]');
+    outBtn  = box.querySelector('[data-lb-out]');
+    inBtn   = box.querySelector('[data-lb-in]');
+    pctEl   = box.querySelector('.lightbox_pct');
     prevBtn = box.querySelector('[data-lb-prev]');
     nextBtn = box.querySelector('[data-lb-next]');
 
     box.addEventListener('click', function (e) {
       if (e.target.closest('[data-lb-close]')) { close(); return; }
-      if (e.target.closest('[data-lb-zoom]'))  { toggleZoom(); return; }
-      if (e.target.closest('[data-lb-prev]'))  { step(-1); return; }
-      if (e.target.closest('[data-lb-next]'))  { step(1); return; }
-      /* Clicking the picture itself is the fastest way in and out of zoom. */
-      if (e.target === img) { toggleZoom(); return; }
+      if (e.target.closest('[data-lb-out]'))   { setStep(step - 1); return; }
+      if (e.target.closest('[data-lb-in]'))    { setStep(step + 1); return; }
+      if (e.target.closest('[data-lb-prev]'))  { go(-1); return; }
+      if (e.target.closest('[data-lb-next]'))  { go(1); return; }
+      /* Clicking the picture steps further in, then wraps back to fit —
+         the whole range is reachable without going near the toolbar. */
+      if (e.target === img) {
+        if (img.dataset.lbDragged) return;
+        setStep(step >= STEPS.length - 1 ? 0 : step + 1);
+        return;
+      }
       /* Anywhere else on the stage is dead space around the page — close. */
       if (e.target === stage) close();
     });
 
+    /* Ctrl/⌘ + wheel zooms, the way every other document viewer does it.
+       A bare wheel is left alone so a zoomed page scrolls normally. */
+    stage.addEventListener('wheel', function (e) {
+      if (!e.ctrlKey && !e.metaKey) return;
+      e.preventDefault();
+      setStep(step + (e.deltaY < 0 ? 1 : -1));
+    }, { passive: false });
+
     /* Drag to pan once the document is bigger than the stage. */
     var dragging = false, sx = 0, sy = 0, sl = 0, st = 0;
     stage.addEventListener('pointerdown', function (e) {
-      if (!zoomed) return;
+      if (step === 0) return;
       dragging = true;
       sx = e.clientX; sy = e.clientY;
       sl = stage.scrollLeft; st = stage.scrollTop;
@@ -114,7 +148,13 @@
   function show(i) {
     index = i;
     var el = group[index];
-    setZoom(false);
+
+    /* Back to fit before swapping, so the next file is measured unzoomed. */
+    step = 0;
+    box.classList.remove('is-zoomed');
+    img.style.width = '';
+    img.style.height = '';
+
     img.src = el.currentSrc || el.src;
     img.alt = el.getAttribute('alt') || '';
     capEl.textContent = captionFor(el);
@@ -122,47 +162,72 @@
     var many = group.length > 1;
     prevBtn.hidden = !many;
     nextBtn.hidden = !many;
+
+    /* The fitted width is the basis for every zoom step, so it has to be
+       measured once the file is actually laid out. */
+    if (img.complete && img.naturalWidth) measureFit();
+    else img.addEventListener('load', measureFit, { once: true });
   }
 
-  function step(dir) {
+  function measureFit() {
+    fitW = img.clientWidth;
+    updateTools();
+  }
+
+  function go(dir) {
     show((index + dir + group.length) % group.length);
   }
 
-  function setZoom(on) {
-    /* Measure the fitted size before the class flip changes it. */
-    var fitW = img.clientWidth;
+  function updateTools() {
+    pctEl.textContent = step === 0 ? 'Fit' : Math.round(STEPS[step] * 100) + '%';
+    outBtn.disabled = step === 0;
+    inBtn.disabled = step >= STEPS.length - 1;
+    /* At the top step the next click on the picture wraps back to fit, so the
+       cursor has to say zoom-out rather than promising more magnification. */
+    box.classList.toggle('is-max', step >= STEPS.length - 1);
+  }
 
-    zoomed = on;
-    box.classList.toggle('is-zoomed', on);
-    zoomBtn.querySelector('.lightbox_btn-label').textContent = on ? 'Fit to screen' : 'Zoom in';
-    zoomBtn.setAttribute('aria-label', on ? 'Fit to screen' : 'Zoom in');
+  function setStep(next) {
+    next = Math.max(0, Math.min(STEPS.length - 1, next));
+    if (next === step || !fitW) { updateTools(); return; }
 
-    if (!on) {
+    /* Hold whatever is in the middle of the stage in the middle of the stage,
+       so zooming in on a paragraph does not throw you somewhere else on the
+       page. From the fitted view there is nothing to hold — start at the top,
+       which is where you read from. */
+    var fromFit = step === 0;
+    var cx = stage.scrollWidth ? (stage.scrollLeft + stage.clientWidth / 2) / stage.scrollWidth : 0.5;
+    var cy = stage.scrollHeight ? (stage.scrollTop + stage.clientHeight / 2) / stage.scrollHeight : 0;
+
+    step = next;
+
+    if (step === 0) {
+      box.classList.remove('is-zoomed');
       img.style.width = '';
       img.style.height = '';
       stage.scrollTop = 0;
       stage.scrollLeft = 0;
+      updateTools();
       return;
     }
 
-    /* Native resolution is the goal, but the low-res scans are already smaller
-       than the fitted view — for those, step up anyway rather than shrinking
-       the picture on a button marked "Zoom in". Capped so an upscale stays
-       this side of unreadable. */
+    /* Past roughly 3.5x the file's own pixels an upscale stops adding anything
+       readable and just adds mush, so that is the ceiling. */
     var natural = img.naturalWidth || fitW;
-    var target = Math.min(Math.max(natural, fitW * 1.8), natural * 2.2);
+    var target = Math.min(fitW * STEPS[step], natural * 3.5);
+
+    box.classList.add('is-zoomed');
     img.style.width = Math.round(target) + 'px';
     img.style.height = 'auto';
 
-    /* Open on the top of the document, horizontally centred — letters and
-       articles are read from the top down. */
-    stage.scrollTop = 0;
-    stage.scrollLeft = (stage.scrollWidth - stage.clientWidth) / 2;
-  }
-
-  function toggleZoom() {
-    if (img.dataset.lbDragged) return;
-    setZoom(!zoomed);
+    if (fromFit) {
+      stage.scrollTop = 0;
+      stage.scrollLeft = (stage.scrollWidth - stage.clientWidth) / 2;
+    } else {
+      stage.scrollLeft = cx * stage.scrollWidth - stage.clientWidth / 2;
+      stage.scrollTop = cy * stage.scrollHeight - stage.clientHeight / 2;
+    }
+    updateTools();
   }
 
   function open(el) {
@@ -177,13 +242,13 @@
     box.classList.add('is-open');
     if (window.AIA && AIA.stopScroll) AIA.stopScroll();
     else document.documentElement.classList.add('no-scroll');
-    zoomBtn.focus();
+    inBtn.focus();
   }
 
   function close() {
     if (!box) return;
-    box.classList.remove('is-open');
-    setZoom(false);
+    box.classList.remove("is-open");
+    setStep(0);
     if (window.AIA && AIA.startScroll) AIA.startScroll();
     else document.documentElement.classList.remove('no-scroll');
     if (lastFocus && lastFocus.focus) lastFocus.focus();
@@ -211,7 +276,9 @@
   document.addEventListener('keydown', function (e) {
     if (!box || !box.classList.contains('is-open')) return;
     if (e.key === 'Escape')     { e.preventDefault(); close(); }
-    if (e.key === 'ArrowLeft')  { step(-1); }
-    if (e.key === 'ArrowRight') { step(1); }
+    if (e.key === "ArrowLeft")  { go(-1); }
+    if (e.key === "ArrowRight") { go(1); }
+    if (e.key === "+" || e.key === "=") { setStep(step + 1); }
+    if (e.key === "-" || e.key === "_") { setStep(step - 1); }
   });
 })();
