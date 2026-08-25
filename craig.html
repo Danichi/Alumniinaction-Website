@@ -128,7 +128,9 @@
             </div>
 
             <div class="era-block">
-              <div class="era-block_media" data-reveal>
+              <!-- Portrait source. In the default 4:3 frame a cover crop takes
+                   off his head and his feet, so this one gets the tall frame. -->
+              <div class="era-block_media is-portrait" data-reveal>
                 <img src="img/craig-dolphins-run.jpg" alt="Craig Ellis running the ball for the Miami Dolphins" loading="lazy">
               </div>
               <div class="era-block_text">
@@ -142,7 +144,7 @@
 
             <div class="era-block">
               <div class="era-block_media is-contain is-portrait" data-reveal>
-                <img src="img/craig-cfl-record.jpg" alt="CFL record book page listing Craig Ellis among players with multiple 100-catch seasons" loading="lazy">
+                <img src="img/craig-cfl-record.jpg" alt="CFL record book page listing Craig Ellis among players with multiple 100-catch seasons" loading="lazy" data-zoom>
               </div>
               <div class="era-block_text">
                 <div class="labels">[ The record ] CFL</div>
@@ -232,11 +234,11 @@
             <div class="two-col" style="align-items: center;">
               <div class="gallery-grid" style="grid-template-columns: repeat(2, 1fr);" data-stagger>
                 <figure class="gallery-item is-tall" style="margin:0; background-color: var(--cream);">
-                  <img src="img/craig-feature-story.jpg" alt="Magazine feature titled The Good, The Bad, The Ellis" loading="lazy" style="object-fit: contain;">
+                  <img src="img/craig-feature-story.jpg" alt="Magazine feature titled The Good, The Bad, The Ellis" loading="lazy" data-zoom data-zoom-group="feature" style="object-fit: contain;">
                   <figcaption class="gallery-item_cap">The published feature, in full</figcaption>
                 </figure>
                 <figure class="gallery-item is-tall" style="margin:0; background-color: var(--cream);">
-                  <img src="img/craig-feature-story-2.jpg" alt="Alternate layout of the feature about Craig Ellis" loading="lazy" style="object-fit: contain;">
+                  <img src="img/craig-feature-story-2.jpg" alt="Alternate layout of the feature about Craig Ellis" loading="lazy" data-zoom data-zoom-group="feature" style="object-fit: contain;">
                   <figcaption class="gallery-item_cap">&ldquo;Most Outstanding Player of the 1990 season&rdquo;</figcaption>
                 </figure>
               </div>
@@ -245,6 +247,7 @@
                 <h2 class="heading-56" data-split-lines>The Good, The Bad, The Ellis</h2>
                 <p class="text-size-20" style="color: rgba(253,247,236,0.85);" data-reveal>Craig told his story in full — South Central, the arrests, the probation officer and the judge who changed the direction of his life, and the decision to bring it all back to the community that raised him.</p>
                 <p class="text-size-16" style="color: rgba(253,247,236,0.7);" data-reveal>&ldquo;Alumni in Action is lining up to give back to the community that gave so much.&rdquo;</p>
+                <p class="text-size-14" style="color: rgba(253,247,236,0.55);" data-reveal>Click either page to open the feature full screen and read it.</p>
               </div>
             </div>
           </div>
@@ -260,6 +263,7 @@
             <div class="section-heading" style="margin-bottom: var(--s-40);">
               <div class="labels" data-reveal>[ What people say ]</div>
               <h2 class="heading-56" data-split-lines>In their words</h2>
+              <p class="text-size-14" style="color: var(--grey);" data-reveal>Click any letter below to open it full screen and read it in full.</p>
             </div>
 
             <div class="card-grid" data-stagger>
@@ -290,15 +294,15 @@
 
             <div class="media-grid" style="margin-top: var(--s-48);" data-stagger>
               <figure>
-                <div class="media-grid_img" style="aspect-ratio: 3 / 4;"><img src="img/letter-united-way.jpg" alt="Letter of support from United Way of South Eastern Alberta" loading="lazy"></div>
+                <div class="media-grid_img" style="aspect-ratio: 3 / 4;"><img src="img/letter-united-way.jpg" alt="Letter of support from United Way of South Eastern Alberta" loading="lazy" data-zoom data-zoom-group="letters"></div>
                 <figcaption class="text-size-14" style="color: var(--grey);">United Way of South Eastern Alberta</figcaption>
               </figure>
               <figure>
-                <div class="media-grid_img" style="aspect-ratio: 3 / 4;"><img src="img/letter-mla-alberta.jpg" alt="Letter of support from Drew Barnes, MLA" loading="lazy"></div>
+                <div class="media-grid_img" style="aspect-ratio: 3 / 4;"><img src="img/letter-mla-alberta.jpg" alt="Letter of support from Drew Barnes, MLA" loading="lazy" data-zoom data-zoom-group="letters"></div>
                 <figcaption class="text-size-14" style="color: var(--grey);">Legislative Assembly of Alberta</figcaption>
               </figure>
               <figure>
-                <div class="media-grid_img" style="aspect-ratio: 3 / 4;"><img src="img/letter-portland-state.jpg" alt="Letter of recommendation for Coach Craig Ellis" loading="lazy"></div>
+                <div class="media-grid_img" style="aspect-ratio: 3 / 4;"><img src="img/letter-portland-state.jpg" alt="Letter of recommendation for Coach Craig Ellis" loading="lazy" data-zoom data-zoom-group="letters"></div>
                 <figcaption class="text-size-14" style="color: var(--grey);">Letter of recommendation from a parent, 2022</figcaption>
               </figure>
             </div>
@@ -425,5 +429,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="js/scroll.js"></script>
 <script src="js/animations.js"></script>
+<script src="js/lightbox.js"></script>
 </body>
 </html>

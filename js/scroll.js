@@ -1,6 +1,6 @@
 /* ==========================================================================
    ALUMNI IN ACTION — Smooth scroll, ScrollTrigger bridge, fluid type ramp,
-   loader, nav, forms
+   scroll, nav, forms
    ========================================================================== */
 
 window.AIA = window.AIA || {};
@@ -77,44 +77,16 @@ window.AIA = window.AIA || {};
   });
 
   /* ------------------------------------------------------------------
-     Loader — outline wordmark fills gold, then the curtain lifts
+     Ready signal — the hero entry animation waits on this. There is no
+     loader curtain any more, so it fires as soon as the page is up.
      ------------------------------------------------------------------ */
-  function runLoader() {
-    var loader = document.querySelector('.loader_wrapper');
-    if (!loader) { document.dispatchEvent(new Event('aia:ready')); return; }
-
-    if (reduceMotion) {
-      loader.style.display = 'none';
-      document.dispatchEvent(new Event('aia:ready'));
-      return;
-    }
-
-    AIA.stopScroll();
-    window.scrollTo(0, 0);
-
-    var tl = gsap.timeline({
-      onComplete: function () {
-        loader.style.display = 'none';
-        AIA.startScroll();
-        ScrollTrigger.refresh();
-        document.dispatchEvent(new Event('aia:ready'));
-      }
-    });
-
-    tl.from('.loader_top, .loader_foot', { opacity: 0, duration: 0.5, ease: 'power2.out', stagger: 0.08 })
-      .to('.loader_word .is-filled', {
-        clipPath: 'inset(0 0% 0 0)',
-        duration: 1.15,
-        ease: 'power2.inOut'
-      }, 0.15)
-      .to('.loader_rule span', { scaleX: 1, duration: 1.15, ease: 'power2.inOut' }, 0.15)
-      .to('.loader_top, .loader_foot, .loader_rule', { opacity: 0, duration: 0.35, ease: 'power2.in' }, '+=0.2')
-      .to('.loader_logo_wrapper', { yPercent: -14, opacity: 0, duration: 0.5, ease: 'power2.in' }, '<')
-      .to('.loader_wrapper', { yPercent: -100, duration: 0.95, ease: 'expo.inOut' }, '-=0.2');
+  function signalReady() {
+    ScrollTrigger.refresh();
+    document.dispatchEvent(new Event('aia:ready'));
   }
 
-  if (document.readyState === 'complete') runLoader();
-  else window.addEventListener('load', runLoader);
+  if (document.readyState === 'complete') signalReady();
+  else window.addEventListener('load', signalReady);
 
   /* ------------------------------------------------------------------
      Navbar — colour flip on scroll, mobile menu

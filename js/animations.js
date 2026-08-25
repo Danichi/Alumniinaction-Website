@@ -104,14 +104,16 @@
         }
       });
 
-      /* A true crossfade. The outgoing bed is driven all the way to 0 and the
-         incoming one all the way to 1 over the same window, so the two are
-         never both half-lit on top of each other. */
+      /* One photo bed the whole way down. It drifts and scales on scroll, then
+         the cream curtain below takes it out — no swap to a second image. */
+      /* The lockup has to be gone before it reaches the navbar. The navbar
+         flips to solid cream at 80px of scroll, and anything still on screen
+         behind it — the crest especially — gets sliced in half by that edge.
+         So: a shorter lift, and the fade finished early rather than lingering
+         at half opacity through the collision. */
       tl.to('.home-hero_bg', { yPercent: 12, scale: 1.12, ease: 'none', duration: 1 }, 0)
-        .to('.home-hero_bg', { opacity: 0, ease: 'power1.inOut', duration: 0.45 }, 0.3)
-        .to('.home-hero_outline-bg', { opacity: 1, ease: 'power1.inOut', duration: 0.45 }, 0.3)
-        .to('.home-hero_content', { yPercent: -18, ease: 'none', duration: 1 }, 0)
-        .to('.home-hero_content', { opacity: 0, ease: 'power1.in', duration: 0.42 }, 0.18)
+        .to('.home-hero_content', { yPercent: -10, ease: 'none', duration: 1 }, 0)
+        .to('.home-hero_content', { opacity: 0, ease: 'power2.in', duration: 0.32 }, 0.04)
         .to('.home-hero_sticky-div', { '--hero-fade': 1, ease: 'none', duration: 1 }, 0);
 
       /* The ::after curtain can't be tweened directly — drive its opacity
@@ -119,7 +121,7 @@
       gsap.set('.home-hero_sticky-div', { '--hero-fade': 0 });
     });
 
-    /* Entry animation for the hero, held until the loader is gone. */
+    /* Entry animation for the hero, once the page is up. */
     document.addEventListener('aia:ready', function () {
       gsap.from('.home-hero_crest', {
         scale: 0.8, opacity: 0, duration: 1.1, ease: 'expo.out', delay: 0.15

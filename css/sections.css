@@ -37,7 +37,9 @@
     rgba(10, 20, 40, 0.92) 100%);
 }
 
-/* Softens the hard cut where the hero hands off to the cream page below. */
+/* The hand-off to the cream page below. The hero holds one photo the whole
+   way down — this curtain is what takes it out, so it needs enough height to
+   read as a fade rather than a band along the bottom edge. */
 .home-hero_sticky-div::after {
   content: "";
   position: absolute;
@@ -45,32 +47,10 @@
   right: 0;
   bottom: 0;
   z-index: 1;
-  height: 22vh;
+  height: 55vh;
   background: linear-gradient(180deg, rgba(253, 247, 236, 0) 0%, var(--cream) 100%);
   opacity: var(--hero-fade, 0);
   pointer-events: none;
-}
-
-/* Second photo bed — the full banner with the crest, driven all the way to
-   full opacity so the two are never both half-lit on top of each other. By the
-   time it lands the navbar has flipped to its cream state, so the crest behind
-   it reads as a brand reveal rather than a collision. */
-.home-hero_outline-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0;
-  background-image: url("../img/hero-banner.jpg");
-  background-position: 50% 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.home-hero_outline-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 20, 40, 0.6) 0%, rgba(10, 20, 40, 0.4) 38%, rgba(10, 20, 40, 0.9) 100%);
 }
 
 .home-hero_content { position: relative; z-index: 2; width: 100%; color: var(--cream); }

@@ -16,50 +16,11 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/sections.css">
-
-<noscript><style>.loader_wrapper { display: none !important; }</style></noscript>
-<script>
-/* Failsafe. The loader is a full-screen curtain that js/scroll.js lifts once
-   its animation finishes. If GSAP never loads — blocked CDN, offline, a script
-   error — that curtain would otherwise sit over the whole site forever. The
-   normal path hides it in roughly three seconds, so this only ever fires when
-   something has actually gone wrong. */
-window.addEventListener('load', function () {
-  setTimeout(function () {
-    var loader = document.querySelector('.loader_wrapper');
-    if (loader) loader.style.display = 'none';
-    document.documentElement.classList.remove('no-scroll');
-  }, 6000);
-});
-</script>
 </head>
 <body>
 <div class="page-wrapper">
 
   <a href="#main" class="skip-link">Skip to main content</a>
-
-  <!-- ====================================================== LOADER (homepage only) -->
-  <div class="loader_wrapper">
-    <div class="loader_top">
-      <div class="labels">Alumni In Action</div>
-      <div class="labels">Est. 2019</div>
-    </div>
-
-    <div class="loader_logo_wrapper">
-      <div class="loader_word">
-        <span class="is-outline">AIA</span>
-        <span class="is-filled">AIA</span>
-      </div>
-      <div class="loader_rule"><span></span></div>
-    </div>
-
-    <div class="loader_foot">
-      <div class="labels">Los Angeles, California</div>
-      <div class="labels">[ A brighter tomorrow ]</div>
-    </div>
-
-    <div class="loader_bg-wrapper"><div class="loader_bg"></div></div>
-  </div>
 
   <!-- ====================================================== NAV -->
   <div class="navbar">
@@ -122,7 +83,6 @@ window.addEventListener('load', function () {
           <img src="img/hero-stadium.jpg" alt="A floodlit football field seen from the fifty-yard line">
           <div class="bg-img_overlay"></div>
         </div>
-        <div class="home-hero_outline-bg"></div>
 
         <div class="home-hero_content">
           <div class="page-padding">
@@ -705,7 +665,7 @@ window.addEventListener('load', function () {
     <section class="section-home-careers">
       <div class="page-padding">
         <div class="container-1360">
-          <div class="padding-section-240 padding-bottom-0">
+          <div class="padding-section-240 padding-bottom-112">
             <div class="home-careers_wrapper">
 
               <div class="home-careers_text-wrapper">
