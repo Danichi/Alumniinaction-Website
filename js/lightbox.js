@@ -257,12 +257,26 @@
   /* ------------------------------------------------------------------
      Wiring
      ------------------------------------------------------------------ */
+  /* Bind to the tile, not the bare <img>. A gallery caption is an absolutely
+     positioned overlay across the whole tile, so a click on the picture lands
+     on the caption and never reaches the image underneath — which is why the
+     letters opened and the gallery photos did not. The letters have their
+     caption outside the image box, so they get the tighter target. */
+  function triggerFor(el) {
+    return el.closest('.media-grid_img') ||
+           el.closest('.era-block_media') ||
+           el.closest('figure') ||
+           el;
+  }
+
   items.forEach(function (el) {
-    el.classList.add('is-zoomable');
+    /* Already inside a link — leave its own behaviour alone. */
+    if (el.closest('a')) return;
+
+    var trigger = triggerFor(el);
+    trigger.classList.add('is-zoomable');
 
     /* Keyboard and screen-reader users need a real control, not a bare img. */
-    var trigger = el.closest('a') ? null : el;
-    if (!trigger) return;
     trigger.setAttribute('role', 'button');
     trigger.setAttribute('tabindex', '0');
     if (!trigger.getAttribute('title')) trigger.setAttribute('title', 'Click to enlarge');
