@@ -146,7 +146,10 @@
           ease: 'power2.inOut',
           duration: 0.40
         }, 0.12)
-        .to(shift, { opacity: 0, ease: 'power2.in', duration: 0.24 }, 0.74)
+        /* No fade-out on the crest. Once it lands in the middle it stays put
+           for the rest of the hero and leaves the screen the ordinary way,
+           carried up by the sticky stage as the section scrolls past. It sits
+           above the cream curtain, so the wash goes on underneath it. */
         .to('.home-hero_sticky-div', { '--hero-fade': 1, ease: 'none', duration: 1 }, 0);
 
       /* The ::after curtain can't be tweened directly — drive its opacity
