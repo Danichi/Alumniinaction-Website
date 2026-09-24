@@ -1367,6 +1367,9 @@
   .era-block { grid-template-columns: 1fr; gap: var(--s-32); padding: var(--s-48) 0; }
   .era-block:nth-child(even) .era-block_media { order: 0; }
   .era-block_media.is-portrait { aspect-ratio: 4 / 3; }
+  /* A flyer carrying a form people actually have to read keeps its
+     portrait shape here; photographs still flip to landscape. */
+  .era-block_media.is-portrait.is-document { aspect-ratio: 3 / 4; }
   .figure-row { grid-template-columns: repeat(2, 1fr); gap: var(--s-32) var(--s-24); }
   .story-lead { font-size: var(--h-32); }
 }
