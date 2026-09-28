@@ -1399,3 +1399,24 @@
   .form-grid { grid-template-columns: 1fr; }
   .amount-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* --------------------------------------------------------------------------
+   Donate — Stripe QR
+   The supplied image already carries its own purple card, rounded corners and
+   "Scan to donate" label, so it is placed as-is with nothing drawn behind it.
+   -------------------------------------------------------------------------- */
+
+.donate-qr {
+  display: flex;
+  align-items: center;
+  gap: var(--s-24);
+  margin-top: var(--s-32);
+}
+
+.donate-qr img { width: 10em; height: auto; flex: none; }
+.donate-qr p { color: var(--grey); max-width: 16em; }
+
+@media (max-width: 479px) {
+  .donate-qr { flex-direction: column; align-items: flex-start; gap: var(--s-16); }
+  .donate-qr p { max-width: none; }
+}
