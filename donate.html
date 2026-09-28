@@ -169,6 +169,20 @@
                   <p class="text-size-16" data-reveal><strong style="color: var(--navy); font-weight: var(--fw-500);">We only accept monetary donations at this time.</strong></p>
                 </div>
 
+                <!-- The actual payment path. Stripe handles the card details and
+                     the receipt; nothing sensitive touches this site. -->
+                <div style="margin-bottom: var(--s-40);">
+                  <a href="https://donate.stripe.com/00w3cx2ABaSIcql5HFcQU01" class="btn-primary is-gold" target="_blank" rel="noopener" data-reveal>
+                    <span class="btn-text-wrapper"><span class="btn-label-16">Donate now</span><span class="btn-label-16-hover">Donate now</span></span>
+                    <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
+                      <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                      <span class="embed-btn-icon-hover"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    </span></span>
+                    <span class="btn-bg"></span>
+                  </a>
+                  <p class="text-size-14" style="color: var(--grey); margin-top: var(--s-16);" data-reveal>Secure checkout through Stripe. You choose the amount on the next screen, and your receipt is emailed to you.</p>
+                </div>
+
                 <div class="contact-detail_list">
                   <div class="contact-detail_item">
                     <div class="labels">Donation enquiries</div>
@@ -187,9 +201,16 @@
               </div>
 
               <div>
+                <div class="section-heading" style="margin-bottom: var(--s-24);">
+                  <div class="labels" data-reveal>[ Or ] Talk to us first</div>
+                  <h3 class="heading-32" data-reveal>Corporate, directed or recurring gifts</h3>
+                  <p class="text-size-16" style="color: var(--ink-70);" data-reveal>Giving on behalf of a business, directing your gift to a specific program, or arranging something ongoing? Send this instead and Joe will come back to you.</p>
+                </div>
                 <form data-donate-form novalidate>
                   <div class="form-field is-full" style="margin-bottom: var(--s-20);">
-                    <label for="amount-picker">Choose an amount</label>
+                    <!-- This does not charge anything — it only tells us the figure
+                         you have in mind. The amount is set on Stripe. -->
+                    <label for="amount-picker">Amount you have in mind</label>
                     <div class="amount-grid" id="amount-picker" data-amount-grid>
                       <button type="button" class="amount-chip" data-amount="$25">$25</button>
                       <button type="button" class="amount-chip" data-amount="$50">$50</button>
@@ -220,7 +241,9 @@
                       <textarea id="d-message" name="message" placeholder="Tell us how you would like your donation directed, or ask us a question."></textarea>
                     </div>
                     <div class="form-field is-full">
-                      <button type="submit" class="btn-primary is-gold" style="align-self: flex-start;">
+                      <!-- Navy, not gold. Gold is reserved for the Stripe button,
+                           so the two paths do not read as equal weight. -->
+                      <button type="submit" class="btn-primary" style="align-self: flex-start;">
                         <span class="btn-text-wrapper"><span class="btn-label-16">Send donation enquiry</span><span class="btn-label-16-hover">Send donation enquiry</span></span>
                         <span class="btn-arrow"><span class="btn-arrow-bg"></span><span class="btn-icon">
                           <span class="embed-btn-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H5.5M13 3V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
