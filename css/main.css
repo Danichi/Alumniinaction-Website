@@ -495,6 +495,29 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: rgba(253, 247, 236, 0.7);
 }
 
+/* Build credit — the last line on the page. Quieter than the copyright above
+   it so it reads as a signature rather than another footer link. */
+.footer_credit {
+  margin-top: var(--s-24);
+  padding-top: var(--s-20);
+  border-top: 1px solid rgba(253, 247, 236, 0.12);
+  text-align: center;
+  color: rgba(253, 247, 236, 0.4);
+}
+
+.footer_credit a {
+  color: rgba(253, 247, 236, 0.65);
+  text-decoration: underline;
+  text-decoration-color: rgba(253, 247, 236, 0.3);
+  text-underline-offset: 3px;
+  transition: color var(--dur) var(--ease-out), text-decoration-color var(--dur) var(--ease-out);
+}
+
+.footer_credit a:hover {
+  color: var(--gold);
+  text-decoration-color: var(--gold);
+}
+
 @media (max-width: 991px) {
   .footer_top { grid-template-columns: 1fr; gap: var(--s-48); }
   .footer_wrapper { gap: var(--s-48); }
